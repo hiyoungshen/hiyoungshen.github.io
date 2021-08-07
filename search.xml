@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>About me</title>
+      <link href="/2021/08/07/About%20Me/"/>
+      <url>/2021/08/07/About%20Me/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Education"><a href="#Education" class="headerlink" title="Education"></a>Education</h2><ul><li>I’m currently an undergraduate student at <a href="https://www.nwpu.edu.cn/">Northwestern Polytechnical University</a>. I will graduate in 2022. My current plan is, i want to seek getting a master or PHD degree.</li><li>I had fun researching Machine Learning, Software Engineering, etc.</li></ul><h2 id="News"><a href="#News" class="headerlink" title="News"></a>News</h2><ul><li>2018/9/1: Admitted by <a href="https://www.nwpu.edu.cn/">Northwestern Polytechnical University</a></li></ul><h2 id="Publications"><a href="#Publications" class="headerlink" title="Publications"></a>Publications</h2><ul><li>none</li></ul><h2 id="Internships"><a href="#Internships" class="headerlink" title="Internships"></a>Internships</h2><ul><li>none</li></ul><h2 id="Awards-amp-Honors"><a href="#Awards-amp-Honors" class="headerlink" title="Awards &amp; Honors"></a>Awards &amp; Honors</h2><ul><li>National Scholarship of Northwestern Polytechnical University.</li><li>First Prize Scholarship of Northwestern Polytechnical University.</li></ul><h2 id="Correspondence"><a href="#Correspondence" class="headerlink" title="Correspondence"></a>Correspondence</h2><ul><li><p>Email: <a href="mailto:&#x68;&#105;&#121;&#x6f;&#x75;&#110;&#x67;&#115;&#x68;&#x65;&#110;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#x68;&#105;&#121;&#x6f;&#x75;&#110;&#x67;&#115;&#x68;&#x65;&#110;&#64;&#103;&#x6d;&#x61;&#105;&#108;&#x2e;&#99;&#x6f;&#x6d;</a></p></li><li><p>Address: Xi’an, Shan Xi, China</p></li><li><p>My blog: <a href="https://hiyoungshen.github.io/">Blog</a> or <a href="https://blog.csdn.net/shen253135371?spm=1000.2115.3001.5343">CSDN</a></p></li><li><p>My github: <a href="https://github.com/hiyoungshen"><strong>GitHub</strong></a></p></li></ul><h2 id="Collaborate"><a href="#Collaborate" class="headerlink" title="Collaborate"></a>Collaborate</h2><ul><li>none</li></ul><h2 id="Some-other-things"><a href="#Some-other-things" class="headerlink" title="Some other things"></a>Some other things</h2><h3 id="How-to-build-a-blog-like-this"><a href="#How-to-build-a-blog-like-this" class="headerlink" title="How to build a blog like this?"></a>How to build a blog like this?</h3><ol><li>How to build a blog like this? What you need is this <a href="https://fuhanshi.github.io/2018/10/03/Hexo-Github%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E7%82%AB%E9%85%B7%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">blog</a> .(There may exists some typos, but it’s not a big problem.)</li><li>Then how to replace a theme? What you need is this <a href="https://www.jianshu.com/p/ef7a29e3ee8e">blog</a>.</li><li>Then where to find many many wonderful themes? What you need is this <a href="https://hexo.io/themes/">website</a>.</li><li>About how to config this website? <a href="https://yuang01.github.io/">clicke here</a></li></ol>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2021/08/07/hello-world/"/>
+      <url>/2021/08/07/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
