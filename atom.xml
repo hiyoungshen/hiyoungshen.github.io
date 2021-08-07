@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2021-08-07T12:02:11.612Z</updated>
+  <updated>2021-08-07T13:35:25.293Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>About algorithm</title>
+    <link href="https://hiyoungshen.github.io/2021/08/07/about-algorithm/"/>
+    <id>https://hiyoungshen.github.io/2021/08/07/about-algorithm/</id>
+    <published>2021-08-07T13:30:11.000Z</published>
+    <updated>2021-08-07T13:35:25.293Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Descriptions&quot;&gt;&lt;a href=&quot;#Descriptions&quot; class=&quot;headerlink&quot; title=&quot;Descriptions&quot;&gt;&lt;/a&gt;Descriptions&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;I insist on solving</summary>
+        
+      
+    
+    
+    
+    
+    <category term="About algorithm" scheme="https://hiyoungshen.github.io/tags/About-algorithm/"/>
+    
+  </entry>
   
   <entry>
     <title>About me</title>
