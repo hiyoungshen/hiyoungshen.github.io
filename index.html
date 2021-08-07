@@ -1336,7 +1336,7 @@
         :data="listData"
         :class-option="classOption"
         class="warp"
-        style="height: 30px"
+        style="height: 60px"
       >
         <ul class="index-notice-content__ul">
           
@@ -1347,6 +1347,23 @@
                   
                     <a href="/archives" title="#这里是我的个人简介" style="color:red">
                       #这里是我的个人简介
+                    </a>
+                  
+                </div>
+                
+                  <div class="index-notice-content__date" style="color:red">
+                    2021-08-07
+                  </div>
+                
+              
+            </li>
+          
+            <li>
+              
+                <div class="index-notice-content__title">
+                  
+                    <a target="_blank" rel="noopener" href="https://github.com/hiyoungshen/LeetcodeOrPat" title="#我2021/08/07日之前的题解详见https://github.com/hiyoungshen/LeetcodeOrPat" style="color:red">
+                      #我2021/08/07日之前的题解详见https://github.com/hiyoungshen/LeetcodeOrPat
                     </a>
                   
                 </div>
@@ -1371,7 +1388,7 @@
 <script>
   var seamless = JSON.parse('false');
   seamless = seamless ? 0 : 30;
-  var listData = '[object Object]' || '';
+  var listData = '[object Object],[object Object]' || '';
   listData = listData.split(',');
   var vm = new Vue({
     el: '#appIndexNotice',
@@ -1405,6 +1422,25 @@
 	<h3><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>Recommend Articles</h3>
 	<div class="articles">
 		
+			
+				<div class="article-link">
+					
+					<div class="article lazyload" data-original="/medias/7.jpg" style="background-size: cover; 
+						background-position: center center;">
+					</div>
+					<div class="text">
+						<div class="text-main">
+							<div class="title"><a href="/2021/08/07/about-algorithm/">About algorithm</a></div>
+							<div class="content">
+								Descriptions
+I insist on solving problems to improve my algo
+							</div>
+						</div>
+						<a href="/2021/08/07/about-algorithm/" class="more">
+							<i class="fa fa-eye" aria-hidden="true"></i>Read More
+						</a>
+					</div>
+				</div>
 			
 		
 			
@@ -1459,6 +1495,11 @@ I’m currently an undergraduate student at Northwes
             </div>
             <div class="post-categories">
               <!-- 文章详情页的分类 -->
+
+<div class="article-category">
+  <i class="iconfont iconbookmark1"></i>
+  <a class="article-category-link" href="/categories/About-me/">About me</a>
+</div>
 
 
             </div>

@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2021-08-07T13:35:25.293Z</updated>
+  <updated>2021-08-07T13:56:48.851Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://hiyoungshen.github.io/2021/08/07/about-algorithm/"/>
     <id>https://hiyoungshen.github.io/2021/08/07/about-algorithm/</id>
     <published>2021-08-07T13:30:11.000Z</published>
-    <updated>2021-08-07T13:35:25.293Z</updated>
+    <updated>2021-08-07T13:56:48.851Z</updated>
     
     
       
@@ -34,6 +34,8 @@
       
     
     
+    
+    <category term="About me" scheme="https://hiyoungshen.github.io/categories/About-me/"/>
     
     
     <category term="About algorithm" scheme="https://hiyoungshen.github.io/tags/About-algorithm/"/>

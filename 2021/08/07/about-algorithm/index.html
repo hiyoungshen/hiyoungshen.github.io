@@ -694,6 +694,15 @@
       
 
       
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/About-me/" class="post-detail-header_category">
+              About me
+            </a>
+          
+        </span>
+      
 
       
     
@@ -713,7 +722,7 @@
       <div class="post-content">
         <h2 id="Descriptions"><a href="#Descriptions" class="headerlink" title="Descriptions"></a>Descriptions</h2><ol>
 <li>I insist on solving problems to improve my algorithm ability!<br>Before 2021/8/7 i have solved many problems <a target="_blank" rel="noopener" href="https://github.com/hiyoungshen/LeetcodeOrPat">here they are</a> !</li>
-<li>Follow my CSDN, sometimes but not frequently, i post my blog on <a target="_blank" rel="noopener" href="https://blog.csdn.net/shen253135371?spm=1000.2115.3001.5343">CSDN</a>. </li>
+<li>Follow my CSDN, sometimes but not frequently, i post my blog on <a target="_blank" rel="noopener" href="https://blog.csdn.net/shen253135371?spm=1000.2115.3001.5343">CSDN</a>. <h2 id="Blogs-after-2021-8-7-will-be-record-at-my-blog"><a href="#Blogs-after-2021-8-7-will-be-record-at-my-blog" class="headerlink" title="Blogs after 2021/8/7 will be record at my blog!"></a>Blogs after 2021/8/7 will be record at my blog!</h2></li>
 </ol>
 
       </div>
@@ -1007,11 +1016,28 @@ I’m currently an undergraduate student at Northwes
   </div>
   <!-- js在scripts目录下的的toc.ejs里面 -->
   
+    <style>
+      .toc-aside {
+        width: 0;
+        padding: 0;
+      }
+      .toc-aside .toc-content {
+        width: 0;
+      }
+      .toc-aside-title span, .toc-aside-title i {
+        display: none;
+      }
+      .main-content {
+        width: 75%;
+        margin: 10px auto;
+      }
+    </style>
+  
 
   <script>
     function openBtnClickFn () {
       let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
-      let open = eval('' || 'true');
+      let open = eval('false' || 'true');
       openOrCloseBtn.click(function() {
         if (open === true) {
           $(".toc-aside").css({'width': 0, 'padding': 0});
