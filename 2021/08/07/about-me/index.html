@@ -694,6 +694,15 @@
       
 
       
+        <span class="post-detail-header_categories">
+          <i class="iconfont iconbookmark1"></i> category：
+          
+            <a href="/categories/About-me/" class="post-detail-header_category">
+              About me
+            </a>
+          
+        </span>
+      
 
       
     
@@ -729,7 +738,7 @@
 <li>First Prize Scholarship of Northwestern Polytechnical University.</li>
 </ul>
 <h2 id="Correspondence"><a href="#Correspondence" class="headerlink" title="Correspondence"></a>Correspondence</h2><ul>
-<li><p>Email: <a href="mailto:&#x68;&#105;&#x79;&#x6f;&#x75;&#x6e;&#x67;&#x73;&#104;&#x65;&#110;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;">&#x68;&#105;&#x79;&#x6f;&#x75;&#x6e;&#x67;&#x73;&#104;&#x65;&#110;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<li><p>Email: <a href="mailto:&#104;&#105;&#121;&#111;&#x75;&#x6e;&#103;&#115;&#x68;&#101;&#110;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;">&#104;&#105;&#121;&#111;&#x75;&#x6e;&#103;&#115;&#x68;&#101;&#110;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#111;&#x6d;</a></p>
 </li>
 <li><p>Address: Xi’an, Shan Xi, China</p>
 </li>
@@ -750,6 +759,14 @@
 
       </div>
       <div class="post-tags-categories">
+        
+        <div class="tags">
+          
+            <a href="/tags/About-me/" class="">
+              About me
+            </a>
+          
+        </div>
         
       </div>
       
@@ -1030,11 +1047,28 @@
   </div>
   <!-- js在scripts目录下的的toc.ejs里面 -->
   
+    <style>
+      .toc-aside {
+        width: 0;
+        padding: 0;
+      }
+      .toc-aside .toc-content {
+        width: 0;
+      }
+      .toc-aside-title span, .toc-aside-title i {
+        display: none;
+      }
+      .main-content {
+        width: 75%;
+        margin: 10px auto;
+      }
+    </style>
+  
 
   <script>
     function openBtnClickFn () {
       let openOrCloseBtn = $('.toc-aside .toc-aside-title .toc-open-close');
-      let open = eval('' || 'true');
+      let open = eval('false' || 'true');
       openOrCloseBtn.click(function() {
         if (open === true) {
           $(".toc-aside").css({'width': 0, 'padding': 0});
@@ -1189,9 +1223,33 @@
   <div class="footer-main">
     <div class="link">
       
+        
+          <a href="mailto:hiyoungshen@gmail.com" class="social">
+            
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            
+          </a>
+        
+      
+        
+          <a target="_blank" rel="noopener" href="https://github.com/hiyoungshen/" class="social">
+            
+              <i class="fa fa-github" aria-hidden="true"></i>
+            
+          </a>
+        
+      
+        
+          <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=253135371" class="social">
+            
+              <i class="fa fa-qq" aria-hidden="true"></i>
+            
+          </a>
+        
+      
     </div>
     <div class="footer-copyright">
-      <p>Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/hiyoungshen">hiyoungshen</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+      <p>Copyright © 2021 - 2022 <a target="_blank" rel="noopener" href="https://github.com/hiyoungshen">hiyoungshen</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
 
     </div>
     <div class="footer-custom">
@@ -1603,10 +1661,14 @@
     
         <!-- 弹幕所需的css和js -->
         
+  <!-- 弹幕插件 -->
+  <link href="/js/danmu/barrager.css" rel="stylesheet">
+  <script src="/js/danmu/jquery.barrager.js"></script>
+
 <!-- 具体js，请前往valine/script.ejs查看 -->
 
         <script>
-  var requiredFields = '';
+  var requiredFields = 'nick,mail';
   requiredFields = requiredFields.split(',');
   comment_el = '.comment';
   let looperValine = null;
@@ -1617,11 +1679,11 @@
         path: window.location.pathname,
         notify: false,
         verify: false,
-        app_id: "",
-        app_key: "",
+        app_id: "yGxXiiBud4j75xComTe197yA-gzGzoHsz",
+        app_key: "kzBVhr6W9sMAwEAz8pi7zrA4",
         placeholder: "客官，说点什么吧",
         avatar: "",
-        master: "",   //博主邮箱md5
+        master: "2cc696926e2ef9ce7d58210c45875a82",   //博主邮箱md5
         tagMeta: ["博主","小伙伴","访客"],     //标识字段名
         friends: "",
         metaPlaceholder: { "nick": "昵称/QQ号", "mail": "邮箱" },
@@ -1641,7 +1703,7 @@
         }
       }
       //查询评论 valine.Q('*').limit(7) -- 查询所有，限制7条, 下面的的代码是查询当前页面
-      var themeDanmu = eval('false');
+      var themeDanmu = eval('true');
       var themeLoop = eval('false');
       var themeLooperTime = '5000' || 5000;
       var speed = '40' || 20;
@@ -1721,6 +1783,10 @@
   };
   $(document).ready(load_valine);
   document.addEventListener('pjax:send', function (e) {
+    
+      $('.danmuBox').length > 0 && $('.danmuBox').remove()
+      looperValine && clearInterval(looperValine);
+      $.fn.barrager.removeAll();
     
   })
   document.addEventListener('pjax:complete', function () {

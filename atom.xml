@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2021-08-07T09:37:59.805Z</updated>
+  <updated>2021-08-07T12:02:11.612Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>About me</title>
-    <link href="https://hiyoungshen.github.io/2021/08/07/about-me/about-me/"/>
-    <id>https://hiyoungshen.github.io/2021/08/07/about-me/about-me/</id>
+    <link href="https://hiyoungshen.github.io/2021/08/07/about-me/"/>
+    <id>https://hiyoungshen.github.io/2021/08/07/about-me/</id>
     <published>2021-08-07T08:39:00.000Z</published>
-    <updated>2021-08-07T09:37:59.805Z</updated>
+    <updated>2021-08-07T12:02:11.612Z</updated>
     
     
       
@@ -35,13 +35,17 @@
     
     
     
+    <category term="About me" scheme="https://hiyoungshen.github.io/categories/About-me/"/>
+    
+    
+    <category term="About me" scheme="https://hiyoungshen.github.io/tags/About-me/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://hiyoungshen.github.io/2021/08/07/about-me/hello-world/"/>
-    <id>https://hiyoungshen.github.io/2021/08/07/about-me/hello-world/</id>
+    <link href="https://hiyoungshen.github.io/2021/08/07/hello-world/"/>
+    <id>https://hiyoungshen.github.io/2021/08/07/hello-world/</id>
     <published>2021-08-07T07:45:03.841Z</published>
     <updated>2021-08-07T07:45:03.841Z</updated>
     

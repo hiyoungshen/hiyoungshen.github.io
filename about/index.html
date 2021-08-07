@@ -853,9 +853,33 @@
   <div class="footer-main">
     <div class="link">
       
+        
+          <a href="mailto:hiyoungshen@gmail.com" class="social">
+            
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            
+          </a>
+        
+      
+        
+          <a target="_blank" rel="noopener" href="https://github.com/hiyoungshen/" class="social">
+            
+              <i class="fa fa-github" aria-hidden="true"></i>
+            
+          </a>
+        
+      
+        
+          <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=253135371" class="social">
+            
+              <i class="fa fa-qq" aria-hidden="true"></i>
+            
+          </a>
+        
+      
     </div>
     <div class="footer-copyright">
-      <p>Copyright © 2019 - 2020 <a target="_blank" rel="noopener" href="https://github.com/hiyoungshen">hiyoungshen</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
+      <p>Copyright © 2021 - 2022 <a target="_blank" rel="noopener" href="https://github.com/hiyoungshen">hiyoungshen</a> | Powered by <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/yuang01/theme">Bamboo</a> </p>
 
     </div>
     <div class="footer-custom">
@@ -1267,10 +1291,14 @@
     
         <!-- 弹幕所需的css和js -->
         
+  <!-- 弹幕插件 -->
+  <link href="/js/danmu/barrager.css" rel="stylesheet">
+  <script src="/js/danmu/jquery.barrager.js"></script>
+
 <!-- 具体js，请前往valine/script.ejs查看 -->
 
         <script>
-  var requiredFields = '';
+  var requiredFields = 'nick,mail';
   requiredFields = requiredFields.split(',');
   comment_el = '.comment';
   let looperValine = null;
@@ -1281,11 +1309,11 @@
         path: window.location.pathname,
         notify: false,
         verify: false,
-        app_id: "",
-        app_key: "",
+        app_id: "yGxXiiBud4j75xComTe197yA-gzGzoHsz",
+        app_key: "kzBVhr6W9sMAwEAz8pi7zrA4",
         placeholder: "客官，说点什么吧",
         avatar: "",
-        master: "",   //博主邮箱md5
+        master: "2cc696926e2ef9ce7d58210c45875a82",   //博主邮箱md5
         tagMeta: ["博主","小伙伴","访客"],     //标识字段名
         friends: "",
         metaPlaceholder: { "nick": "昵称/QQ号", "mail": "邮箱" },
@@ -1305,7 +1333,7 @@
         }
       }
       //查询评论 valine.Q('*').limit(7) -- 查询所有，限制7条, 下面的的代码是查询当前页面
-      var themeDanmu = eval('false');
+      var themeDanmu = eval('true');
       var themeLoop = eval('false');
       var themeLooperTime = '5000' || 5000;
       var speed = '40' || 20;
@@ -1385,6 +1413,10 @@
   };
   $(document).ready(load_valine);
   document.addEventListener('pjax:send', function (e) {
+    
+      $('.danmuBox').length > 0 && $('.danmuBox').remove()
+      looperValine && clearInterval(looperValine);
+      $.fn.barrager.removeAll();
     
   })
   document.addEventListener('pjax:complete', function () {
