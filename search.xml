@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>leetcode-313.超级丑数-最小堆ordp</title>
+      <link href="/2021/08/09/leetcode-313-chao-ji-chou-shu-zui-xiao-dui-ordp/"/>
+      <url>/2021/08/09/leetcode-313-chao-ji-chou-shu-zui-xiao-dui-ordp/</url>
+      
+        <content type="html"><![CDATA[<h1 id="leetcode-313-超级丑数-最小堆ordp"><a href="#leetcode-313-超级丑数-最小堆ordp" class="headerlink" title="leetcode-313.超级丑数-最小堆ordp"></a>leetcode-313.超级丑数-最小堆ordp</h1><h2 id="cpp中的insert方法："><a href="#cpp中的insert方法：" class="headerlink" title="cpp中的insert方法："></a>cpp中的insert方法：</h2><p>set的单元素版返回一个二元组（Pair）。成员 pair::first 被设置为指向新插入元素的迭代器或指向等值的已经存在的元素的迭代器。成员 pair::second 是一个 bool 值，如果新的元素被插入，返回 true，如果等值元素已经存在（即无新元素插入），则返回 false。</p><h2 id="动态规划解题思路"><a href="#动态规划解题思路" class="headerlink" title="动态规划解题思路"></a>动态规划解题思路</h2><p>其实动态规划的思路，也就是多指针。<br>举例说明这种思想，例如例子:</p><p>primes=[2,7,13,19]<br>我们要求解的超级丑数的数组为$dp[]$,$dp[i]$代表第i个超级丑数为$dp[i]$</p><p>很容易知道,dp[1]=1。</p><p>我们如何求解下面的丑数字？很朴素的一个思想就是，$primes[]$里面的数字去互相做乘法，生成的数字也放到$primes[]$中去，最好这些$primes$还能够拍好序，这样我只要能找到里面最小的还没有被算过的两个数字，去相乘，把新的数字放到$primes[]$中去，我们的答案就可以求解出来。</p><p>但是如何不重不漏做？<br>首先引入$pointers[]$指针，这个指针指示，当前$primes[]$去乘以$dp[]$中的哪一个数字，去生成我们新的数字,新生成的数字和$primes[]$维度相同，记录为$tmp[]$，找到里面最小的数字，把这个最小的数字的$pointers[]++$。<br>具体的代码如下所示：</p><pre><code class="cpp">for(int i=2;i&lt;=n;i++)&#123;            int minVal=INT_MAX;            // 不能直接记录最小丑数所在的位置，因为可能有多个primes[]中的素数和dp[]中的数字相乘产生了相同的值            // int minPos=-1;            for(int j=0;j&lt;m;j++)&#123;                tmp[j]=primes[j]*dp[pointers[j]];                if(minVal&gt;tmp[j])&#123;                    minVal=tmp[j];                    // minPos=j;                &#125;            &#125;            dp[i]=minVal;            // pointers[minPos]++;            for(int j=0;j&lt;m;j++)&#123;                if(tmp[j]==minVal)&#123;                    pointers[j]++;                &#125;            &#125;        &#125;</code></pre><h2 id="动态规划时间复杂度分析"><a href="#动态规划时间复杂度分析" class="headerlink" title="动态规划时间复杂度分析"></a>动态规划时间复杂度分析</h2><p>执行用时：68 ms, 在所有 C++ 提交中击败了87.09%的用户<br>内存消耗：8.6 MB, 在所有 C++ 提交中击败了64.29%的用户<br>两层循环，时间复杂度O(mn)</p><h2 id="动态规划代码"><a href="#动态规划代码" class="headerlink" title="动态规划代码"></a>动态规划代码</h2><pre><code class="cpp">class Solution &#123;public:    int nthSuperUglyNumber(int n, vector&lt;int&gt;&amp; primes) &#123;                int m=primes.size();        vector&lt;int&gt;pointers(m,1);                vector&lt;int&gt;dp(n+1,0);        dp[1]=1;        vector&lt;int&gt;tmp(m,0);        for(int i=2;i&lt;=n;i++)&#123;            int minVal=INT_MAX;            // 不能直接记录最小丑数所在的位置，因为可能有多个primes[]中的素数和dp[]中的数字相乘产生了相同的值            // int minPos=-1;            for(int j=0;j&lt;m;j++)&#123;                tmp[j]=primes[j]*dp[pointers[j]];                if(minVal&gt;tmp[j])&#123;                    minVal=tmp[j];                    // minPos=j;                &#125;            &#125;            dp[i]=minVal;            // pointers[minPos]++;            for(int j=0;j&lt;m;j++)&#123;                if(tmp[j]==minVal)&#123;                    pointers[j]++;                &#125;            &#125;        &#125;        return dp[n];    &#125;&#125;;</code></pre><h2 id="最小堆解题思路"><a href="#最小堆解题思路" class="headerlink" title="最小堆解题思路"></a>最小堆解题思路</h2><p>所有的元素都是由primes数组中的数字生成，我们只要维护一个set，不断用里面的数字乘以primes[]中的数字，不断的生成数字就好，为了降低set插入的复杂度，可以使用unordered_set去重复。</p><p>还有一些细节具体看代码。</p><h2 id="最小堆时间复杂度分析"><a href="#最小堆时间复杂度分析" class="headerlink" title="最小堆时间复杂度分析"></a>最小堆时间复杂度分析</h2><p>n次循环，每次循环取出一个元素lognm，做m次乘法插入m个元素，每次插入O(lognm)，因此一次循环的时间复杂度为O(mlog(mn))，总的时间复杂度O(mnlogmn)</p><h2 id="最小堆代码"><a href="#最小堆代码" class="headerlink" title="最小堆代码"></a>最小堆代码</h2><pre><code class="cpp">class Solution &#123;public:    // vector&lt;int&gt;allPrimes;    // vector&lt;bool&gt;vis(1000000,false);    // void make_prime(int n)&#123;    //     for(int i=2;i&lt;=n;i++)&#123;    //         if(!vis[i])&#123;    //             allPrimes.push_back(i);    //         &#125;    //         for(int j=0;j&lt;allPrimes.size();i++)&#123;    //             // allPrimes[j]的i倍已经被筛选过，剩下素数的i倍肯定更大，不能忍一下，要退出    //             if(i*allPrimes[j]&gt;n)break;    //             vis[i*allPrimes[j]]=true;    //             // 当前的倍数已经是allPrimes[j]的倍数，比如4是2的倍数，那么是4的倍数的属留到后面给2去筛    //             if(i%allPrimes[j]==0)&#123;    //                 break;    //             &#125;    //         &#125;    //     &#125;    // &#125;    typedef long long ll;    unordered_set&lt;int&gt;sets;    priority_queue&lt;ll,vector&lt;ll&gt;,greater&lt;ll&gt;&gt;q;    int nthSuperUglyNumber(int n, vector&lt;int&gt;&amp; primes) &#123;        sets.insert(1);        q.push(1);        int top;        for(int i=0;i&lt;n;i++)&#123;            top=q.top();            q.pop();            for(auto&amp; val:primes)&#123;                // 插入成功，没有重复的元素                if(sets.insert((ll)top*val).second)&#123;                    q.push((ll)top*val);                &#125;            &#125;        &#125;        return top;    &#125;&#125;;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> About me </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> About algorithm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>About thoughts</title>
       <link href="/2021/08/09/2021-8-8-northwestern-polytechnical-university/"/>
       <url>/2021/08/09/2021-8-8-northwestern-polytechnical-university/</url>

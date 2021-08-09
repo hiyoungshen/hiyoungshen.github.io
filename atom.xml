@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2021-08-08T16:28:08.154Z</updated>
+  <updated>2021-08-09T08:13:03.415Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode-313.超级丑数-最小堆ordp</title>
+    <link href="https://hiyoungshen.github.io/2021/08/09/leetcode-313-chao-ji-chou-shu-zui-xiao-dui-ordp/"/>
+    <id>https://hiyoungshen.github.io/2021/08/09/leetcode-313-chao-ji-chou-shu-zui-xiao-dui-ordp/</id>
+    <published>2021-08-09T07:31:55.000Z</published>
+    <updated>2021-08-09T08:13:03.415Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;leetcode-313-超级丑数-最小堆ordp&quot;&gt;&lt;a href=&quot;#leetcode-313-超级丑数-最小堆ordp&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="About me" scheme="https://hiyoungshen.github.io/categories/About-me/"/>
+    
+    
+    <category term="About algorithm" scheme="https://hiyoungshen.github.io/tags/About-algorithm/"/>
+    
+  </entry>
   
   <entry>
     <title>About thoughts</title>
