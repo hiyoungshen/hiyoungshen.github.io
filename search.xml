@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>bash-WSL2设置自动走windows代理</title>
+      <link href="/2021/08/24/bash-wsl2-she-zhi-zi-dong-zou-windows-dai-li/"/>
+      <url>/2021/08/24/bash-wsl2-she-zhi-zi-dong-zou-windows-dai-li/</url>
+      
+        <content type="html"><![CDATA[<h1 id="配置WSL2的终端配置走windows代理"><a href="#配置WSL2的终端配置走windows代理" class="headerlink" title="配置WSL2的终端配置走windows代理"></a>配置WSL2的终端配置走windows代理</h1><ol><li>vscode打开编辑</li></ol><p><code>code ~/.bashrc</code></p><ol start="2"><li>最后加上 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">host_ip</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">cat</span> /etc/resolv.conf <span class="token operator">|</span><span class="token function">grep</span> <span class="token string">"nameserver"</span> <span class="token operator">|</span><span class="token function">cut</span> -f <span class="token number">2</span> -d <span class="token string">" "</span><span class="token variable">)</span></span><span class="token builtin class-name">export</span> <span class="token assign-left variable">ALL_PROXY</span><span class="token operator">=</span><span class="token string">"http://<span class="token variable">$host_ip</span>:7890"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li><li><code>source ~/.bashrc</code>更新一下bash.</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> About bash </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> About bash </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>About me</title>
       <link href="/2021/08/10/plan-when-i-have-been-admitted/"/>
       <url>/2021/08/10/plan-when-i-have-been-admitted/</url>
