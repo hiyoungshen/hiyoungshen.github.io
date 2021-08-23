@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>About me</title>
+      <link href="/2021/08/10/plan-when-i-have-been-admitted/"/>
+      <url>/2021/08/10/plan-when-i-have-been-admitted/</url>
+      
+        <content type="html"><![CDATA[<h1 id="I-just-come-up-with-a-big-plan-fulled-with-surprise"><a href="#I-just-come-up-with-a-big-plan-fulled-with-surprise" class="headerlink" title="I just come up with a big plan, fulled with surprise!!!"></a>I just come up with a big plan, fulled with surprise!!!</h1><p>When i have been admitted as a postgraduate student, i want to record what i have experienced in my college time!<br>I think it’s such a meaningful thing, as i will forget all people when i grow up, forget all things when i get oldder!</p><h2 id="The-most-important-Where-are-my-friends-going-I-want-to-keep-contact-with-each-other"><a href="#The-most-important-Where-are-my-friends-going-I-want-to-keep-contact-with-each-other" class="headerlink" title="The most important! Where are my friends going? I want to keep contact with each other!"></a>The most important! Where are my friends going? I want to keep contact with each other!</h2><p>记录一下我的朋友们的去向！我想一直和他们保持联系！</p><h2 id="Relationships-with-my-teacher"><a href="#Relationships-with-my-teacher" class="headerlink" title="Relationships with my teacher"></a>Relationships with my teacher</h2><p>记录一下我和一些老师的关系！</p><h2 id="Relationships-with-my-friends"><a href="#Relationships-with-my-friends" class="headerlink" title="Relationships with my friends"></a>Relationships with my friends</h2><p>记录一下我和我的朋友之间的关系！</p><h2 id="Relationships-with-my-ex-girlfriend"><a href="#Relationships-with-my-ex-girlfriend" class="headerlink" title="Relationships with my ex girlfriend"></a>Relationships with my ex girlfriend</h2><p>记录一下我的伞兵一样的直男感情史</p><h2 id="Relationships-with-my-school"><a href="#Relationships-with-my-school" class="headerlink" title="Relationships with my school"></a>Relationships with my school</h2><p>记录一下我和学校之间的关系</p><h2 id="Relationships-with-myself"><a href="#Relationships-with-myself" class="headerlink" title="Relationships with myself"></a>Relationships with myself</h2><p>记录一下我和我自己的关系</p><h2 id="I-want-to-record-beautiful-seneries-in-my-college-taking-many-many-photos"><a href="#I-want-to-record-beautiful-seneries-in-my-college-taking-many-many-photos" class="headerlink" title="I want to record beautiful seneries in my college, taking many many photos!"></a>I want to record beautiful seneries in my college, taking many many photos!</h2><p>记录美丽的校园！</p><h2 id="Update-my-personal-blog-thanks-to-all-friends-and-record-where-their-personal-blogs-are"><a href="#Update-my-personal-blog-thanks-to-all-friends-and-record-where-their-personal-blogs-are" class="headerlink" title="Update my personal blog, thanks to all friends and record where their personal blogs are!"></a>Update my personal blog, thanks to all friends and record where their personal blogs are!</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> About me </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> About me </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>leetcode-313.超级丑数-最小堆ordp</title>
       <link href="/2021/08/09/leetcode-313-chao-ji-chou-shu-zui-xiao-dui-ordp/"/>
       <url>/2021/08/09/leetcode-313-chao-ji-chou-shu-zui-xiao-dui-ordp/</url>
@@ -13,7 +38,32 @@
       
       <categories>
           
-          <category> About me </category>
+          <category> About algorithm </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> About algorithm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>leetcode-11. 盛最多水的容器-双指针</title>
+      <link href="/2021/08/09/leetcode-11.sheng-zui-duo-shui-de-rong-qi-shuang-zhi-zhen/"/>
+      <url>/2021/08/09/leetcode-11.sheng-zui-duo-shui-de-rong-qi-shuang-zhi-zhen/</url>
+      
+        <content type="html"><![CDATA[<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><ol><li>设立左右两个指针left和right，<strong>最开始的时候左指针指向最左，右指针指向最右</strong>，然后不断的缩小左右的指针，缩小的策略是：<strong>选择$height[left]$和$height[right]$中较小的数字进行缩小</strong>，也就是$left++$ or $right–$。</li><li>这样做很容易证明其正确性，当前的面积为$min(height[left],height[right])*(right-left)$，当缩小$[left,right]$范围的时候，$(right-left)$必定减小，如果选择$min(height[left],height[right])$较大的进行缩小，为了解释，这里假设较大的数字是$height[right]$，那么新的$min(height[left],height[rightNew])&lt;=min(height[left],height[right])$，且$(rightNew-left)&lt;(right-left)$，故面积必定减小，因此只能$left++。$<h1 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h1>时间复杂度$O(n)$<br>空间复杂度$O(1)$<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span><span class="token keyword">public</span><span class="token operator">:</span>    <span class="token keyword">int</span> <span class="token function">maxArea</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> height<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        <span class="token keyword">int</span> n<span class="token operator">=</span>height<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> ret<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>        <span class="token keyword">int</span> left<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>right<span class="token operator">=</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>        <span class="token keyword">while</span><span class="token punctuation">(</span>left<span class="token operator">&lt;</span>right<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>            ret<span class="token operator">=</span><span class="token function">max</span><span class="token punctuation">(</span>ret<span class="token punctuation">,</span><span class="token function">min</span><span class="token punctuation">(</span>height<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">,</span>height<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>right<span class="token operator">-</span>left<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment">// cout&lt;&lt;left&lt;&lt;" "&lt;&lt;right&lt;&lt;endl;</span>            <span class="token keyword">if</span><span class="token punctuation">(</span>height<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token operator">&lt;</span>height<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>                left<span class="token operator">++</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>            <span class="token keyword">else</span><span class="token punctuation">&#123;</span>                right<span class="token operator">--</span><span class="token punctuation">;</span>            <span class="token punctuation">&#125;</span>        <span class="token punctuation">&#125;</span>            <span class="token keyword">return</span> ret<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> About algorithm </category>
           
       </categories>
       
