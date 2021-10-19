@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2021-10-19T10:19:24.888Z</updated>
+  <updated>2021-10-19T10:20:45.008Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在ubuntu中使用sudo找不到命令</title>
+    <link href="https://hiyoungshen.github.io/2021/10/18/zai-ubuntu-zhong-shi-yong-sudo-zhao-bu-dao-ming-ling/"/>
+    <id>https://hiyoungshen.github.io/2021/10/18/zai-ubuntu-zhong-shi-yong-sudo-zhao-bu-dao-ming-ling/</id>
+    <published>2021-10-18T14:48:13.000Z</published>
+    <updated>2021-10-19T10:20:45.008Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;sudo有时候会出现找不到命令&quot;&gt;&lt;a href=&quot;#sudo有时候会出现找不到命令&quot; class=&quot;headerlink&quot; title=&quot;sudo有时候会出现找不到命令&quot;&gt;&lt;/a&gt;sudo有时候会出现找不到命令&lt;/h1&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="About Bash" scheme="https://hiyoungshen.github.io/categories/About-Bash/"/>
+    
+    
+    <category term="About Bash" scheme="https://hiyoungshen.github.io/tags/About-Bash/"/>
+    
+  </entry>
   
   <entry>
     <title>NWPU VR&amp;AR PPT大纲</title>
