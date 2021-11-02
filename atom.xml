@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2021-10-30T08:16:59.379Z</updated>
+  <updated>2021-10-31T14:01:02.015Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>An Explorative Study of the Mobile App Ecosystem from App Developers’ Perspective</title>
+    <link href="https://hiyoungshen.github.io/2021/10/30/an-explorative-study-of-the-mobile-app-ecosystem-from/"/>
+    <id>https://hiyoungshen.github.io/2021/10/30/an-explorative-study-of-the-mobile-app-ecosystem-from/</id>
+    <published>2021-10-30T08:40:33.000Z</published>
+    <updated>2021-10-31T14:01:02.015Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;An-Explorative-Study-of-the-Mobile-App-Ecosystem-from-App-Developers’-Perspective&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="About Me" scheme="https://hiyoungshen.github.io/categories/About-Me/"/>
+    
+    
+    <category term="About Blogs" scheme="https://hiyoungshen.github.io/tags/About-Blogs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AppNet: Understanding App Recommendation in Google Play</title>
+    <link href="https://hiyoungshen.github.io/2021/10/30/appnet-understanding-app-recommendation-in-google-play/"/>
+    <id>https://hiyoungshen.github.io/2021/10/30/appnet-understanding-app-recommendation-in-google-play/</id>
+    <published>2021-10-30T08:37:00.000Z</published>
+    <updated>2021-10-30T14:03:51.747Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;AppNet-Understanding-App-Recommendation-in-Google-Play&quot;&gt;&lt;a href=&quot;#AppNet-Understanding-App-Recommendation-in-Google-Play&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="About Me" scheme="https://hiyoungshen.github.io/categories/About-Me/"/>
+    
+    
+    <category term="About Blogs" scheme="https://hiyoungshen.github.io/tags/About-Blogs/"/>
+    
+  </entry>
   
   <entry>
     <title>Demystifying Illegal Mobile Gambling Apps</title>
