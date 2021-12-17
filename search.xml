@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>Mobile App Squatting</title>
+      <link href="/2021/12/17/mobile-app-squatting/"/>
+      <url>/2021/12/17/mobile-app-squatting/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Mobile-App-Squatting"><a href="#Mobile-App-Squatting" class="headerlink" title="Mobile App Squatting"></a>Mobile App Squatting</h1><h2 id="What-is-Mobile-App-Squatting"><a href="#What-is-Mobile-App-Squatting" class="headerlink" title="What is Mobile App Squatting?"></a>What is Mobile App Squatting?</h2><p>In “App Squatting”, attackers release apps with identifiers (e.g., app name or package name) that are confusingly similar to those of popular apps or well-known Internet brands.</p><h2 id="Where-this-idea-from"><a href="#Where-this-idea-from" class="headerlink" title="Where this idea from?"></a>Where this idea from?</h2><ul><li>mainly from domain squatting<br>We start by performing a preliminary study of app squatting on 10 popular apps</li></ul><h2 id="Main-study-steps"><a href="#Main-study-steps" class="headerlink" title="Main study steps"></a>Main study steps</h2><ul><li><p>performing <strong>a preliminary study</strong> of app squatting on 10 popular apps (Section 3). We generate 3,283 potential “squatting names” for these 10 apps, employing the rules of existing domain squatting tools. </p></li><li><p>We then <strong>verify whether the potential squatting apps exist in the wild</strong>(using Koodous [20], a mobile app corpus containing more than 50 million Android apps). </p></li><li><p>We find that app squatting abuse is, indeed, highly prevalent for Android apps. Based on the verified squatting apps, we then <strong>identify the common patterns that attackers leverage in app squatting</strong> (Section 4). We then <strong>use these rules to design and implement AppCrazy</strong>, a tool to systematically generate squatting identifier names for mobile apps. Given an Android app as the input, AppCrazy automatically generates confusingly similar app names and package names that could be leveraged by attackers. </p></li><li><p>Exploiting the capabilities of AppCrazy, we then conduct <strong>a large scale empirical analysis</strong>: we apply it to <em>426 additional apps crawled from Google Play and generate more than 200K potential squatting names</em> (Section 5). From these, *we discover 10,553 squatting apps, confirming that this threat far exceeds the top 10 apps alone. <strong>Finally, we characterize the impact introduced by app squatting</strong> (Section 6), including <em>the prevalence of squatting apps in major app markets</em>, and <em>the number of app installs of the squatting apps.</em></p></li></ul><h2 id="What-i-get"><a href="#What-i-get" class="headerlink" title="What i get?"></a>What i get?</h2><ul><li><p>discover something that people don’t touched.<br>  去找人们没有做过的东西。</p></li><li><p>去已经做过的东西中发现新的点子。</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> About Thesis </category>
+          
+          <category> About Software Analysis </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> About Thesis </tag>
+            
+            <tag> About Software Analysis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>区块链技术与应用</title>
+      <link href="/2021/12/06/qu-kuai-lian-ji-zhu-yu-ying-yong/"/>
+      <url>/2021/12/06/qu-kuai-lian-ji-zhu-yu-ying-yong/</url>
+      
+        <content type="html"><![CDATA[<h2 id="课时3，Data-structure"><a href="#课时3，Data-structure" class="headerlink" title="课时3，Data structure"></a>课时3，Data structure</h2><ol><li><p>hash pointer<br>存储hash值 &amp; 指针</p><ul><li>概念<ul><li>hash值代表结构体的hash值</li><li>指针指示这个区块在内存中的位置</li><li>H()表示一个hash指针。</li></ul></li><li>作用：<ul><li>不仅可以得到位置</li><li>也可以判断这个区块是否被改掉</li></ul></li></ul></li><li><p>Block Chain is a linked list using hash pointer<br><img src="/2021/12/06/qu-kuai-lian-ji-zhu-yu-ying-yong/pic1.png" class="lazyload placeholder" data-srcset="/2021/12/06/qu-kuai-lian-ji-zhu-yu-ying-yong/pic1.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></p><ul><li>genesis block: 创世区块</li><li>改动某一个区块的值，其后区块的hash值都对不上，因此，改一个区块就要改掉后面的所有的区块。</li><li><strong>系统中的某一个节点，不再需要存储整个区块链的所有的区块，只需要存储部分，就可以验证之前的区块是否被修改过</strong>。<ul><li>存储部分，要用到前面额区块的话，就去问别的节点要，只需要验证别的节点给你的区块的hash值，就可以验证别的节点给你的区块是不是真实的区块。</li></ul></li></ul></li><li><p>Merkle Tree</p><ul><li>Merkle Tree用hash pointer代替了普通指针<br><img src="/2021/12/06/qu-kuai-lian-ji-zhu-yu-ying-yong/pic2.png" class="lazyload placeholder" data-srcset="/2021/12/06/qu-kuai-lian-ji-zhu-yu-ying-yong/pic2.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></li><li>最下层的是数据块，每一个块是一个transaction。</li><li>对每一个数据块的篡改都会影响到root hash，因此保护了整棵树。</li><li>Merkle Proof. <ul><li><img src="/2021/12/06/qu-kuai-lian-ji-zhu-yu-ying-yong/pic3.png" class="lazyload placeholder" data-srcset="/2021/12/06/qu-kuai-lian-ji-zhu-yu-ying-yong/pic3.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></li><li>全节点保存整个区块的内容。</li><li>轻节点只保存block header。<ul><li>proof of membership/inclusion(证明某个交易存在过)<ul><li>轻节点想知道一个transaction是否发生过？首先我们知道这个transaction发生的位置（如何知道的？），也就是知道这个transactions发生在哪一个区块。比如上图黄色transaction.</li><li>现在轻节点向全节点请求，全节点把三个红色的hash发送给轻节点，那么那三个绿色的hash值轻节点就可以自己算出来了，于是可以得到这一颗Merkel Tree的根节点的hash值。根hash值和轻节点保存的hash值进行比较，就可以判断这个交易是否真实的发生过。</li><li>O(log(n))</li></ul></li><li>proof of non-membership<ul><li>直接证明的复杂度是O(n)</li><li>我们的交易可能出现在这个叶节点的各个位置，因此没有更好的方法。</li><li>但是如果Merkel Tree中的hash值按照hash值的大小从大到小排序，那么我们在验证这个节点不存在的时候，我们只需要先算出这个要验证的交易的hash值，然后就可以二分的找出这个hash值可能存在的位置，最后根据这个位置再去验证根的hash值是否是有效的。</li><li><img src="/2021/12/06/qu-kuai-lian-ji-zhu-yu-ying-yong/pic4.png" class="lazyload placeholder" data-srcset="/2021/12/06/qu-kuai-lian-ji-zhu-yu-ying-yong/pic4.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></li><li>代价是需要去排序。</li><li><strong>排序的Merkle Tree</strong>叫做<strong>sorted Merkle Tree</strong></li><li>bitcoin中不需要做这种不存在性证明。</li></ul></li></ul></li></ul></li><li><strong>Block Chain和Merkle Tree的关系</strong>：<ul><li>Block Chain<ul><li>Block Header(存储Merkel Tree的root hash值)</li><li>Block Body(包含有所有的一个区块内的transactions)</li></ul></li></ul></li></ul></li><li><p>hash pointer不好应用于环</p></li></ol><ul><li><img src="/2021/12/06/qu-kuai-lian-ji-zhu-yu-ying-yong/pic5.png" class="lazyload placeholder" data-srcset="/2021/12/06/qu-kuai-lian-ji-zhu-yu-ying-yong/pic5.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg"></li><li>不好确定哪一个作为开始。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> About Thesis </category>
+          
+          <category> About Block Chain </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> About Thesis </tag>
+            
+            <tag> About Block Chain </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Understanding the Evolution of Mobile App Ecosystems: A Longitudinal Measurement Study of Google Play</title>
       <link href="/2021/11/04/understanding-the-evolution-of-mobile-app-ecosystems/"/>
       <url>/2021/11/04/understanding-the-evolution-of-mobile-app-ecosystems/</url>

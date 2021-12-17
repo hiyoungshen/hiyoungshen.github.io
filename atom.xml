@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2021-11-09T06:52:46.786Z</updated>
+  <updated>2021-12-17T10:50:13.241Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mobile App Squatting</title>
+    <link href="https://hiyoungshen.github.io/2021/12/17/mobile-app-squatting/"/>
+    <id>https://hiyoungshen.github.io/2021/12/17/mobile-app-squatting/</id>
+    <published>2021-12-17T10:34:28.000Z</published>
+    <updated>2021-12-17T10:50:13.241Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Mobile-App-Squatting&quot;&gt;&lt;a href=&quot;#Mobile-App-Squatting&quot; class=&quot;headerlink&quot; title=&quot;Mobile App Squatting&quot;&gt;&lt;/a&gt;Mobile App</summary>
+        
+      
+    
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/About-Software-Analysis/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About Software Analysis" scheme="https://hiyoungshen.github.io/tags/About-Software-Analysis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>区块链技术与应用</title>
+    <link href="https://hiyoungshen.github.io/2021/12/06/qu-kuai-lian-ji-zhu-yu-ying-yong/"/>
+    <id>https://hiyoungshen.github.io/2021/12/06/qu-kuai-lian-ji-zhu-yu-ying-yong/</id>
+    <published>2021-12-06T07:01:43.000Z</published>
+    <updated>2021-12-06T07:59:47.273Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;课时3，Data-structure&quot;&gt;&lt;a href=&quot;#课时3，Data-structure&quot; class=&quot;headerlink&quot; title=&quot;课时3，Data structure&quot;&gt;&lt;/a&gt;课时3，Data</summary>
+        
+      
+    
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    <category term="About Block Chain" scheme="https://hiyoungshen.github.io/categories/About-Thesis/About-Block-Chain/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About Block Chain" scheme="https://hiyoungshen.github.io/tags/About-Block-Chain/"/>
+    
+  </entry>
   
   <entry>
     <title>Understanding the Evolution of Mobile App Ecosystems: A Longitudinal Measurement Study of Google Play</title>
