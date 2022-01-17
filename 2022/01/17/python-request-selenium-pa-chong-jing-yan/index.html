@@ -653,6 +653,7 @@
 <li>将cpu的利用率不要压到太满，70%足矣。</li>
 <li>并行进程尽量使用pool.apply_async()，手动撰写bash一个一个启动python脚本，会多耗费内存。</li>
 <li>处理大数据，尽量使用已有的云资源，云服务器在处理大数据上有独有的优势，一个是可以自定义配置设备属性（内存多大，硬盘多大，核多少等等），本地的PC/笔记本处理器数百G的大数据的能力实在捉襟见肘。（机械硬盘读取真的很慢，很慢，很慢）</li>
+<li>国内机器访问国外网站应该使用加速器或者vpn，aws不需要使用，request需要配置走代理，否则访问不了，如果使用vpn, selenium可以不用配置（一半vpn软件都默认配置浏览器流量走代理）</li>
 </ol>
 <h1 id="一些shell脚本"><a href="#一些shell脚本" class="headerlink" title="一些shell脚本"></a>一些shell脚本</h1><h2 id="aws-ec2设置8G交换区"><a href="#aws-ec2设置8G交换区" class="headerlink" title="aws ec2设置8G交换区"></a>aws ec2设置8G交换区</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># aws设置8G交换区
 sudo dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;swapfile bs&#x3D;128M count&#x3D;64 # 8G
