@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2022-01-17T14:19:06.908Z</updated>
+  <updated>2022-01-19T03:49:47.098Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux下中断程序导致写文件失败</title>
+    <link href="https://hiyoungshen.github.io/2022/01/19/linux-xia-zhong-duan-cheng-xu-dao-zhi-xie-wen-jian-shi-bai/"/>
+    <id>https://hiyoungshen.github.io/2022/01/19/linux-xia-zhong-duan-cheng-xu-dao-zhi-xie-wen-jian-shi-bai/</id>
+    <published>2022-01-19T03:44:22.000Z</published>
+    <updated>2022-01-19T03:49:47.098Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Linux下中断程序导致写文件失败&quot;&gt;&lt;a href=&quot;#Linux下中断程序导致写文件失败&quot; class=&quot;headerlink&quot; title=&quot;Linux下中断程序导致写文件失败&quot;&gt;&lt;/a&gt;Linux下中断程序导致写文件失败&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
+    
+    
+    <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
+    
+  </entry>
+  
+  <entry>
     <title>python request+selenium爬虫经验</title>
     <link href="https://hiyoungshen.github.io/2022/01/17/python-request-selenium-pa-chong-jing-yan/"/>
     <id>https://hiyoungshen.github.io/2022/01/17/python-request-selenium-pa-chong-jing-yan/</id>
     <published>2022-01-17T13:48:49.000Z</published>
-    <updated>2022-01-17T14:19:06.908Z</updated>
+    <updated>2022-01-19T03:43:58.208Z</updated>
     
     
       
