@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2022-01-19T03:49:47.098Z</updated>
+  <updated>2022-01-20T14:11:53.869Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>aws emr notebook attached successfully but still &quot;Workspace is not attached to cluster. Click Ok to continue.&quot;</title>
+    <link href="https://hiyoungshen.github.io/2022/01/20/aws-emr-notebook-attached-successfully-but-still-workspace-is-not-attached-to-cluster-click-ok-to-continue/"/>
+    <id>https://hiyoungshen.github.io/2022/01/20/aws-emr-notebook-attached-successfully-but-still-workspace-is-not-attached-to-cluster-click-ok-to-continue/</id>
+    <published>2022-01-20T14:08:35.189Z</published>
+    <updated>2022-01-20T14:11:53.869Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;aws-emr-notebook-attached-successfully-but-still-“Workspace-is-not-attached-to-cluster-Click-Ok-to-continue-”&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
+    
+    
+    <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux下中断程序导致写文件失败</title>

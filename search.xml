@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>aws emr notebook attached successfully but still &quot;Workspace is not attached to cluster. Click Ok to continue.&quot;</title>
+      <link href="/2022/01/20/aws-emr-notebook-attached-successfully-but-still-workspace-is-not-attached-to-cluster-click-ok-to-continue/"/>
+      <url>/2022/01/20/aws-emr-notebook-attached-successfully-but-still-workspace-is-not-attached-to-cluster-click-ok-to-continue/</url>
+      
+        <content type="html"><![CDATA[<h2 id="aws-emr-notebook-attached-successfully-but-still-“Workspace-is-not-attached-to-cluster-Click-Ok-to-continue-”"><a href="#aws-emr-notebook-attached-successfully-but-still-“Workspace-is-not-attached-to-cluster-Click-Ok-to-continue-”" class="headerlink" title="aws emr notebook attached successfully but still “Workspace is not attached to cluster. Click Ok to continue.”"></a>aws emr notebook attached successfully but still “Workspace is not attached to cluster. Click Ok to continue.”</h2><ol><li>需要使用经过验证的的aws emr版本（youtube上按照别人的版本配置来）。</li><li>不要自己启动cluster，在创建notebook的时候启动cluster更好（使用默认配置就行）。</li><li>最好使用IAM USER而不是root account去创建和使用集群，stackoverflow上有人提到了这一点。</li></ol><h2 id="a-little-emo-for-wasting-two-full-days-of-my-life"><a href="#a-little-emo-for-wasting-two-full-days-of-my-life" class="headerlink" title="a little emo for wasting two full days of my life"></a>a little emo for wasting two full days of my life</h2><ol><li>hope bug fixed soon.</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> About Experience </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> About Experience </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux下中断程序导致写文件失败</title>
       <link href="/2022/01/19/linux-xia-zhong-duan-cheng-xu-dao-zhi-xie-wen-jian-shi-bai/"/>
       <url>/2022/01/19/linux-xia-zhong-duan-cheng-xu-dao-zhi-xie-wen-jian-shi-bai/</url>
