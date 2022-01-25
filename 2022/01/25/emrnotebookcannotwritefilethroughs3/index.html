@@ -11,7 +11,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>Linux下中断程序导致写文件失败 | SHEN Haiyang</title>
+  <title>EMRNotebookCannotWriteFileThroughS3 | SHEN Haiyang</title>
 
   <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="../../../../favicon.ico">
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_1911880_c1nvbyezg17.css">
@@ -599,21 +599,21 @@
 
 
 <div class="post-detail-header" id="thumbnail_canvas" style="background-repeat: no-repeat; background-size: cover; 
-  background-position: center center;position: relative;background-image:url('../../../../medias/10.jpg')">
+  background-position: center center;position: relative;background-image:url('../../../../medias/9.jpg')">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
   
   <div class="post-detail-header_info-box">
     <div class="title-box">
       <span class="title">
-        Linux下中断程序导致写文件失败
+        EMRNotebookCannotWriteFileThroughS3
       </span>
     </div>
     
     
       
         <span class="post-detail-header_date">
-          <i class="fas fa-calendar"></i> Published in：2022-01-19 |
+          <i class="fas fa-calendar"></i> Published in：2022-01-25 |
         </span>
       
 
@@ -625,8 +625,8 @@
               About Experience
             </a>
           
-            <a href="../../../../categories/About-Experience/About-Linux/" class="post-detail-header_category">
-              About Linux
+            <a href="../../../../categories/About-Experience/About-AWS/" class="post-detail-header_category">
+              About AWS
             </a>
           
         </span>
@@ -647,137 +647,334 @@
   <div class="main-content">
     <article class="post post-detail">
       <div class="post-content">
-        <h1 id="Linux下中断程序导致写文件失败"><a href="#Linux下中断程序导致写文件失败" class="headerlink" title="Linux下中断程序导致写文件失败"></a>Linux下中断程序导致写文件失败</h1><h2 id="起因，需要向硬盘中写文件，写入文件的时候遇到ctrl-c或者kill指令杀死静默的进程时，导致文件flush到一半"><a href="#起因，需要向硬盘中写文件，写入文件的时候遇到ctrl-c或者kill指令杀死静默的进程时，导致文件flush到一半" class="headerlink" title="起因，需要向硬盘中写文件，写入文件的时候遇到ctrl-c或者kill指令杀死静默的进程时，导致文件flush到一半"></a>起因，需要向硬盘中写文件，写入文件的时候遇到ctrl-c或者kill指令杀死静默的进程时，导致文件flush到一半</h2><p>导致文件错误。</p>
-<h2 id="ctrl-c和kill"><a href="#ctrl-c和kill" class="headerlink" title="ctrl-c和kill"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ShaneZhang/p/4438066.html">ctrl-c和kill</a></h2><p>案例：</p>
-<p>一个普通linux C程序，执行期间会进行多次printf操作，利用bash脚本重定向功能，将stdout重定向到一个另一个文件中去。在运行途中用ctrl+C终止程序，发现定向文件始终为空，即写失败。</p>
-<p>分析：</p>
-<p>原本以为是bash重定向机制导致的问题，于是将重定向取消，改为使用fprintf，而非printf。即在C程序内部进行写文件。发现问题依旧。（排除fopen打开失败的因素）</p>
-<p>仔细观察，发现问题集中在两个层面，一个是ctrl+c到底做了什么，二是写文件操作为什么失败。</p>
-<p>首先，ctrl+C不代表杀死进程，仅仅代表中断。中断和杀死并不是完全一样的概念。google了一下，有以下发现：</p>
-<p>“Linux中的kill命令用来终止指定的进程（terminate a process）的运行，是Linux下进程管理的常用命令。通常，终止一个前台进程可以使用Ctrl+C键，但是，对于一个后台进程就须用kill命令来终止，我们就需要先使用ps/pidof/pstree/top等工具获取进程PID，然后使用kill命令来杀掉该进程。kill命令是通过向进程发送指定的信号来结束相应进程的。在默认情况下，采用编号为15的TERM信号。TERM信号将终止所有不能捕获该信号的进程。对于那些可以捕获该TERM信号的进程就要用编号为9的kill信号，强行“杀掉”该进程。” </p>
-<p> “</p>
-<p>1、kill命令可以带信号号码选项，也可以不带。如果没有信号号码，kill命令就会发出终止信号(15)，这个信号可以被进程捕获，使得进程在退出之前可以清理并释放资源。也可以用kill向进程发送特定的信号。例如：</p>
-<p>kill -2 123</p>
-<p>它的效果等同于在前台运行PID为123的进程时按下Ctrl+C键。但是，普通用户只能使用不带signal参数的kill命令或最多使用-9信号。</p>
-<p>2、kill可以带有进程ID号作为参数。当用kill向这些进程发送信号时，必须是这些进程的主人。如果试图撤销一个没有权限撤销的进程或撤销一个不存在的进程，就会得到一个错误信息。</p>
-<p>3、可以向多个进程发信号或终止它们。</p>
-<p>4、当kill成功地发送了信号后，shell会在屏幕上显示出进程的终止信息。有时这个信息不会马上显示，只有当按下Enter键使shell的命令提示符再次出现时，才会显示出来。</p>
-<p>5、应注意，信号使进程强行终止，这常会带来一些副作用，如数据丢失或者终端无法恢复到正常状态。发送信号时必须小心，只有在万不得已时，才用kill信号(9)，因为进程不能首先捕获它。要撤销所有的后台作业，可以输入kill 0。因为有些在后台运行的命令会启动多个进程，跟踪并找到所有要杀掉的进程的PID是件很麻烦的事。这时，使用kill 0来终止所有由当前shell启动的进程，是个有效的方法。</p>
-<p>6、只有第9种信号(SIGKILL)才可以无条件终止进程，其他信号进程都有权利忽略。 下面是常用的信号：</p>
-<p>HUP    1    终端断线</p>
-<p>INT     2    中断（同 Ctrl + C）</p>
-<p>QUIT    3    退出（同 Ctrl + \）</p>
-<p>TERM   15    终止</p>
-<p>KILL    9    强制终止</p>
-<p>CONT   18    继续（与STOP相反， fg/bg命令）</p>
-<p>STOP    19    暂停（同 Ctrl + Z）</p>
-<p>”</p>
-<p>至此，可以得出一个结论：我们平常所按ctrl+C不等价于“终止进程”。ctrl+C一般情况下等价于kill -s SIGINT。即进程接受的是SIGINT信号。而接受了SIGINT信号并不是简单的杀死进程。</p>
-<p>在一般程序编写中，可以利用signal.h中所包含的相关函数（如sigaction）来对这些不同类别的信号进行响应，从而进行对应的后处理，如资源的释放等等。</p>
-<p>如此，在bash脚本中如若出现：</p>
-<p>$cmd &amp;</p>
-<p>spid=$!</p>
-<p>kill -s SIGINT $spid</p>
-<p>是无法杀死进程的。进程仍旧在后台运行。若改成kill -9 $spid。便可杀死进程。</p>
-<p>扯的有点远了。回到之前的问题，无论采取上述哪种kill方式，都会导致写文件失败。</p>
-<p>那面对这些kill，平常的程序到底如何应对写文件之类的操作呢？再google一下，得到以下有用信息：</p>
-<p>“SIGINT can be caught and handled. It’s like telling the process “Please stop what you’re doing.” The process is free to ignore the signal, or implement a handler that does anything it wants. The default behavior is to terminate, and this is what most processes will do. It’s typical, but not required, for a process to handle SIGINT by gracefully terminating – closing any open files, network connections, or database handles and stopping the current operation in such a way that prevents data loss or corruption.</p>
-<p>SIGKILL can’t be handled by the receiving process. If a process gets sent SIGKILL, it’s toast, period. If a process receives SIGKILL in the middle of a database transaction or file write (for instance), it has no chance to exit gracefully and data loss or corruption may occur.</p>
-<p>When you do Ctrl-C in the terminal, the terminal sends SIGINT to the running process. Like I said before, most processes will gracefully terminate on receiving SIGINT. Once it’s terminated, it’s just as surely ended as if it had been SIGKILL’ed or exited normally – you shouldn’t expect to see it in ps because it’s still gone.</p>
-<p>But there are some programs that don’t respond to SIGINT in that way. bash is one example; if you hit Ctrl-C at a shell prompt, it’ll just cancel whatever you’ve typed on that line – not terminate the whole shell. Again, this is because the behavior when a process receives SIGINT is determined by the process itself. vi is another program that doesn’t handle SIGINT by terminating.”</p>
-<p>和我们上面分析的一样，大部分的程序都需要一个handler来应对SIGINT信号。文中提到了exit normally。看来只有正常退出才能保证写文件成功？</p>
-<p>stackoverflow上面有一个问答正好解决了我的疑问。</p>
-<p>Q:</p>
-<p>I’ve read in a man page that when exit() is called all streams are flushed and closed automatically. At first I was skeptical as to how this was done and whether it is truly reliable but seeing as I can’t find out any more I’m going to accept that it just works — we’ll see if anything blows up. Anyway, if this stream closing behavior is present in exit() is such behavior also present in the default handler for SIGINT (the interrupt signal usually triggered with Ctrl+C)? Or, would it be necessary to do something like this:</p>
-<p>#include &lt;signal.h&gt;<br>#include &lt;stdlib.h&gt;</p>
-<p>void onInterrupt(int dummy) { exit(0); }</p>
-<p>int main() {<br>   signal(SIGINT, onInterrupt);<br>   FILE *file = fopen(“file”, “a”);<br>   for (;;) { fprintf(file, “bleh”); } }<br>to get file to be closed properly? Or can the signal(SIG… and void onInterrupt(… lines be safely omitted?</p>
-<p>Please restrict any replies to C, C99, and POSIX as I’m not using GNU libc. Thanks.</p>
-<p>A:</p>
-<p>1.So in C99, if it’s closed then it’s flushed.</p>
-<p>2.You’ll have to handle the signal if you want your buffers flushed. Otherwise the process will be terminated and the file descriptors closed without flushing the stdio buffers.</p>
-<p>By default, a SIGINT will terminate the process abnornally. Processes so terminated do not call exit() and so do not have buffers flushed.</p>
-<p>也就是说，只有正常退出，才能做到flush。否则将写失败。</p>
-<p>之后有百度了下中文资料，发现同样的结论。</p>
-<p>“fflush库函数的作用是把文件流里的所有未写出数据立刻写出。例如，你可以用这个函数来确保在试图读入一个用户响应之前，先向终端送出一个交互提示符。使用这个函数还可以确保在程序继续执行之前重要的数据都已经被写到磁盘上。有时在调试程序时，还可以用它来确定程序是正在写数据而不是被挂起了。注意，调用fclose函数隐含执行了一次flush操作，所以不必在fclose之前调用fflush。</p>
-<p>fclose库函数关闭指定的文件流stream，使所有尚未写出的数据都写出。因为stdio库会对数据进行缓冲，所以使用fclose是很重要的。如果程序需要确保数据已经全部写出，就应该调用fclose函数。虽然当程序正常结束时，会自动对所有还打开的文件流调用fclose函数，但这样做就没有机会检查由fclose报告的错误了。与文件描述符一样，可用文件流的数目也是有限制的。这个限制由头文件stdio.h中的FOPEN_MAX常量定义，最小为8。”</p>
-<p>“所谓flush一个缓冲，是指对写缓冲而言，将缓冲内的数据全部写入实际的文件，并将缓冲清空，这样可以保证文件处于最新的状态。之所以需要flush，是因为写缓冲使得文件处于一种不同步的状态，逻辑上一些数据已经写入了文件，但实际上这些数据仍然在缓冲中，如果此时程序意外地退出（发生异常或断电等），那么缓冲里的数据将没有机会写入文件。flush可以在一定程度上避免这样的情况发生。”</p>
-<p>所以说，平时咱写程序，需要谨慎和按流程来，fclose做的事情有很多，不要全指望main函数return后自动帮你close文件。因为一旦出现上述中断的情形，就会生问题。</p>
-<p>解决方案：</p>
-<p>分析了这么多，解决方案相比也很明了了。</p>
-<p>方案一：</p>
-<p>在C程序中加入SIGINT响应函数，保证程序正常退出。</p>
-<p>方案二：</p>
-<p>在C程序中加入fflush函数，保证所有输出第一时间写入文件。</p>
-<p>方案一才是最好的解决方案，而方案二有些hack了。</p>
-<p>就这样。</p>
-<h2 id="在python中处理异常-stackoverflow"><a href="#在python中处理异常-stackoverflow" class="headerlink" title="在python中处理异常, stackoverflow"></a>在python中处理异常, <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1112343/how-do-i-capture-sigint-in-python">stackoverflow</a></h2><h3 id="处理类"><a href="#处理类" class="headerlink" title="处理类"></a>处理类</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> signal
+        <h1 id="自AWS-EMR5-x和6-x的某个版本后-AWS-EMR-Notebook在EMR创建的EC2机器上运行"><a href="#自AWS-EMR5-x和6-x的某个版本后-AWS-EMR-Notebook在EMR创建的EC2机器上运行" class="headerlink" title="自AWS EMR5.x和6.x的某个版本后, AWS EMR Notebook在EMR创建的EC2机器上运行"></a>自AWS EMR5.x和6.x的某个版本后, AWS EMR Notebook在EMR创建的EC2机器上运行</h1><h2 id="Notebook没有在EC2上写文件的权力"><a href="#Notebook没有在EC2上写文件的权力" class="headerlink" title="Notebook没有在EC2上写文件的权力"></a>Notebook没有在EC2上写文件的权力</h2><ul>
+<li><p>利用AWS s3n, 写文件的时候(目前hadoop已经不再推荐s3n的使用, 推荐使用s3a), 需要在机器上创建tmp临时文件夹, 然而notebook并没有写文件的权限(<strong>原因待验证</strong>…), 因此, notebook仅仅方便于简单的代码测试. </p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">---------------------------------------------------------------------------
+Py4JJavaError                             Traceback (most recent call last)
+&lt;ipython-input-72-18e7cdbec7d6&gt; in &lt;module&gt;
+      5 #     )
+      6 all_df.write.format(&quot;csv&quot;).option(&quot;header&quot;, &quot;true&quot;).save(
+----&gt; 7         path &#x3D; &quot;s3n:&#x2F;&#x2F;process-roblox-data-bucket&#x2F;0_60.json&quot;, mode &#x3D; &quot;overwrite&quot;
+      8     )
 
-<span class="token keyword">class</span> <span class="token class-name">GracefulInterruptHandler</span><span class="token punctuation">(</span><span class="token builtin">object</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+~&#x2F;.local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pyspark&#x2F;sql&#x2F;readwriter.py in save(self, path, format, mode, partitionBy, **options)
+    738             self._jwrite.save()
+    739         else:
+--&gt; 740             self._jwrite.save(path)
+    741 
+    742     @since(1.4)
 
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> sig<span class="token operator">=</span>signal<span class="token punctuation">.</span>SIGINT<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>sig <span class="token operator">=</span> sig
+~&#x2F;.local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;py4j&#x2F;java_gateway.py in __call__(self, *args)
+   1308         answer &#x3D; self.gateway_client.send_command(command)
+   1309         return_value &#x3D; get_return_value(
+-&gt; 1310             answer, self.gateway_client, self.target_id, self.name)
+   1311 
+   1312         for temp_arg in temp_args:
 
-    <span class="token keyword">def</span> <span class="token function">__enter__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+~&#x2F;.local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pyspark&#x2F;sql&#x2F;utils.py in deco(*a, **kw)
+    109     def deco(*a, **kw):
+    110         try:
+--&gt; 111             return f(*a, **kw)
+    112         except py4j.protocol.Py4JJavaError as e:
+    113             converted &#x3D; convert_exception(e.java_exception)
 
-        self<span class="token punctuation">.</span>interrupted <span class="token operator">=</span> <span class="token boolean">False</span>
-        self<span class="token punctuation">.</span>released <span class="token operator">=</span> <span class="token boolean">False</span>
+~&#x2F;.local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;py4j&#x2F;protocol.py in get_return_value(answer, gateway_client, target_id, name)
+    326                 raise Py4JJavaError(
+    327                     &quot;An error occurred while calling &#123;0&#125;&#123;1&#125;&#123;2&#125;.\n&quot;.
+--&gt; 328                     format(target_id, &quot;.&quot;, name), value)
+    329             else:
+    330                 raise Py4JError(
 
-        self<span class="token punctuation">.</span>original_handler <span class="token operator">=</span> signal<span class="token punctuation">.</span>getsignal<span class="token punctuation">(</span>self<span class="token punctuation">.</span>sig<span class="token punctuation">)</span>
+Py4JJavaError: An error occurred while calling o880.save.
+: org.apache.spark.SparkException: Job aborted.
+    at org.apache.spark.sql.errors.QueryExecutionErrors$.jobAbortedError(QueryExecutionErrors.scala:496)
+    at org.apache.spark.sql.execution.datasources.FileFormatWriter$.write(FileFormatWriter.scala:251)
+    at org.apache.spark.sql.execution.datasources.InsertIntoHadoopFsRelationCommand.run(InsertIntoHadoopFsRelationCommand.scala:186)
+    at org.apache.spark.sql.execution.command.DataWritingCommandExec.sideEffectResult$lzycompute(commands.scala:113)
+    at org.apache.spark.sql.execution.command.DataWritingCommandExec.sideEffectResult(commands.scala:111)
+    at org.apache.spark.sql.execution.command.DataWritingCommandExec.executeCollect(commands.scala:125)
+    at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.$anonfun$applyOrElse$1(QueryExecution.scala:110)
+    at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$5(SQLExecution.scala:103)
+    at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:163)
+    at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:90)
+    at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:775)
+    at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:64)
+    at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:110)
+    at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:106)
+    at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1(TreeNode.scala:481)
+    at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(TreeNode.scala:82)
+    at org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.scala:481)
+    at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$catalyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.scala:30)
+    at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning(AnalysisHelper.scala:267)
+    at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning$(AnalysisHelper.scala:263)
+    at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:30)
+    at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:30)
+    at org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:457)
+    at org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecution.scala:106)
+    at org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryExecution.scala:93)
+    at org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.scala:91)
+    at org.apache.spark.sql.execution.QueryExecution.assertCommandExecuted(QueryExecution.scala:128)
+    at org.apache.spark.sql.DataFrameWriter.runCommand(DataFrameWriter.scala:848)
+    at org.apache.spark.sql.DataFrameWriter.saveToV1Source(DataFrameWriter.scala:382)
+    at org.apache.spark.sql.DataFrameWriter.saveInternal(DataFrameWriter.scala:355)
+    at org.apache.spark.sql.DataFrameWriter.save(DataFrameWriter.scala:239)
+    at sun.reflect.GeneratedMethodAccessor116.invoke(Unknown Source)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke(Method.java:498)
+    at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+    at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+    at py4j.Gateway.invoke(Gateway.java:282)
+    at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+    at py4j.commands.CallCommand.execute(CallCommand.java:79)
+    at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+    at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+    at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 82.0 failed 1 times, most recent failure: Lost task 0.0 in stage 82.0 (TID 131) (ip-172-31-12-72.ec2.internal executor driver): java.io.IOException: fs.s3.buffer.dir not configured
+    at org.apache.hadoop.fs.LocalDirAllocator$AllocatorPerContext.confChanged(LocalDirAllocator.java:311)
+    at org.apache.hadoop.fs.LocalDirAllocator$AllocatorPerContext.getLocalPathForWrite(LocalDirAllocator.java:393)
+    at org.apache.hadoop.fs.LocalDirAllocator$AllocatorPerContext.createTmpFileForWrite(LocalDirAllocator.java:476)
+    at org.apache.hadoop.fs.LocalDirAllocator.createTmpFileForWrite(LocalDirAllocator.java:213)
+    at org.apache.hadoop.fs.s3native.NativeS3FileSystem$NativeS3FsOutputStream.newBackupFile(NativeS3FileSystem.java:254)
+    at org.apache.hadoop.fs.s3native.NativeS3FileSystem$NativeS3FsOutputStream.&lt;init&gt;(NativeS3FileSystem.java:236)
+    at org.apache.hadoop.fs.s3native.NativeS3FileSystem.create(NativeS3FileSystem.java:404)
+    at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1195)
+    at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1175)
+    at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1064)
+    at org.apache.spark.sql.execution.datasources.CodecStreams$.createOutputStream(CodecStreams.scala:81)
+    at org.apache.spark.sql.execution.datasources.CodecStreams$.createOutputStreamWriter(CodecStreams.scala:92)
+    at org.apache.spark.sql.execution.datasources.csv.CsvOutputWriter.&lt;init&gt;(CsvOutputWriter.scala:38)
+    at org.apache.spark.sql.execution.datasources.csv.CSVFileFormat$$anon$1.newInstance(CSVFileFormat.scala:85)
+    at org.apache.spark.sql.execution.datasources.SingleDirectoryDataWriter.newOutputWriter(FileFormatDataWriter.scala:161)
+    at org.apache.spark.sql.execution.datasources.SingleDirectoryDataWriter.&lt;init&gt;(FileFormatDataWriter.scala:146)
+    at org.apache.spark.sql.execution.datasources.FileFormatWriter$.executeTask(FileFormatWriter.scala:290)
+    at org.apache.spark.sql.execution.datasources.FileFormatWriter$.$anonfun$write$16(FileFormatWriter.scala:229)
+    at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+    at org.apache.spark.scheduler.Task.run(Task.scala:131)
+    at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:506)
+    at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1462)
+    at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:509)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+    at java.lang.Thread.run(Thread.java:748)
 
-        <span class="token keyword">def</span> <span class="token function">handler</span><span class="token punctuation">(</span>signum<span class="token punctuation">,</span> frame<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            self<span class="token punctuation">.</span>release<span class="token punctuation">(</span><span class="token punctuation">)</span>
-            self<span class="token punctuation">.</span>interrupted <span class="token operator">=</span> <span class="token boolean">True</span>
+Driver stacktrace:
+    at org.apache.spark.scheduler.DAGScheduler.failJobAndIndependentStages(DAGScheduler.scala:2403)
+    at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2(DAGScheduler.scala:2352)
+    at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2$adapted(DAGScheduler.scala:2351)
+    at scala.collection.mutable.ResizableArray.foreach(ResizableArray.scala:62)
+    at scala.collection.mutable.ResizableArray.foreach$(ResizableArray.scala:55)
+    at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:49)
+    at org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:2351)
+    at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1(DAGScheduler.scala:1109)
+    at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1$adapted(DAGScheduler.scala:1109)
+    at scala.Option.foreach(Option.scala:407)
+    at org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:1109)
+    at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:2591)
+    at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2533)
+    at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2522)
+    at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)
+    at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:898)
+    at org.apache.spark.SparkContext.runJob(SparkContext.scala:2214)
+    at org.apache.spark.sql.execution.datasources.FileFormatWriter$.write(FileFormatWriter.scala:218)
+    ... 40 more
+Caused by: java.io.IOException: fs.s3.buffer.dir not configured
+    at org.apache.hadoop.fs.LocalDirAllocator$AllocatorPerContext.confChanged(LocalDirAllocator.java:311)
+    at org.apache.hadoop.fs.LocalDirAllocator$AllocatorPerContext.getLocalPathForWrite(LocalDirAllocator.java:393)
+    at org.apache.hadoop.fs.LocalDirAllocator$AllocatorPerContext.createTmpFileForWrite(LocalDirAllocator.java:476)
+    at org.apache.hadoop.fs.LocalDirAllocator.createTmpFileForWrite(LocalDirAllocator.java:213)
+    at org.apache.hadoop.fs.s3native.NativeS3FileSystem$NativeS3FsOutputStream.newBackupFile(NativeS3FileSystem.java:254)
+    at org.apache.hadoop.fs.s3native.NativeS3FileSystem$NativeS3FsOutputStream.&lt;init&gt;(NativeS3FileSystem.java:236)
+    at org.apache.hadoop.fs.s3native.NativeS3FileSystem.create(NativeS3FileSystem.java:404)
+    at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1195)
+    at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1175)
+    at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1064)
+    at org.apache.spark.sql.execution.datasources.CodecStreams$.createOutputStream(CodecStreams.scala:81)
+    at org.apache.spark.sql.execution.datasources.CodecStreams$.createOutputStreamWriter(CodecStreams.scala:92)
+    at org.apache.spark.sql.execution.datasources.csv.CsvOutputWriter.&lt;init&gt;(CsvOutputWriter.scala:38)
+    at org.apache.spark.sql.execution.datasources.csv.CSVFileFormat$$anon$1.newInstance(CSVFileFormat.scala:85)
+    at org.apache.spark.sql.execution.datasources.SingleDirectoryDataWriter.newOutputWriter(FileFormatDataWriter.scala:161)
+    at org.apache.spark.sql.execution.datasources.SingleDirectoryDataWriter.&lt;init&gt;(FileFormatDataWriter.scala:146)
+    at org.apache.spark.sql.execution.datasources.FileFormatWriter$.executeTask(FileFormatWriter.scala:290)
+    at org.apache.spark.sql.execution.datasources.FileFormatWriter$.$anonfun$write$16(FileFormatWriter.scala:229)
+    at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+    at org.apache.spark.scheduler.Task.run(Task.scala:131)
+    at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:506)
+    at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1462)
+    at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:509)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+    ... 1 more<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>更新,利用AWS s3a, 写文件到s3可以成功, notebook进行代码测试的时候可以用s3a, 用s3n会报错(spark 3.x之后)</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">---------------------------------------------------------------------------
+Py4JJavaError                             Traceback (most recent call last)
+&lt;ipython-input-72-18e7cdbec7d6&gt; in &lt;module&gt;
+      5 #     )
+      6 all_df.write.format(&quot;csv&quot;).option(&quot;header&quot;, &quot;true&quot;).save(
+----&gt; 7         path &#x3D; &quot;s3n:&#x2F;&#x2F;process-roblox-data-bucket&#x2F;0_60.json&quot;, mode &#x3D; &quot;overwrite&quot;
+      8     )
 
-        signal<span class="token punctuation">.</span>signal<span class="token punctuation">(</span>self<span class="token punctuation">.</span>sig<span class="token punctuation">,</span> handler<span class="token punctuation">)</span>
+~&#x2F;.local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pyspark&#x2F;sql&#x2F;readwriter.py in save(self, path, format, mode, partitionBy, **options)
+    738             self._jwrite.save()
+    739         else:
+--&gt; 740             self._jwrite.save(path)
+    741 
+    742     @since(1.4)
 
-        <span class="token keyword">return</span> self
+~&#x2F;.local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;py4j&#x2F;java_gateway.py in __call__(self, *args)
+   1308         answer &#x3D; self.gateway_client.send_command(command)
+   1309         return_value &#x3D; get_return_value(
+-&gt; 1310             answer, self.gateway_client, self.target_id, self.name)
+   1311 
+   1312         for temp_arg in temp_args:
 
-    <span class="token keyword">def</span> <span class="token function">__exit__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token builtin">type</span><span class="token punctuation">,</span> value<span class="token punctuation">,</span> tb<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>release<span class="token punctuation">(</span><span class="token punctuation">)</span>
+~&#x2F;.local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;pyspark&#x2F;sql&#x2F;utils.py in deco(*a, **kw)
+    109     def deco(*a, **kw):
+    110         try:
+--&gt; 111             return f(*a, **kw)
+    112         except py4j.protocol.Py4JJavaError as e:
+    113             converted &#x3D; convert_exception(e.java_exception)
 
-    <span class="token keyword">def</span> <span class="token function">release</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+~&#x2F;.local&#x2F;lib&#x2F;python3.7&#x2F;site-packages&#x2F;py4j&#x2F;protocol.py in get_return_value(answer, gateway_client, target_id, name)
+    326                 raise Py4JJavaError(
+    327                     &quot;An error occurred while calling &#123;0&#125;&#123;1&#125;&#123;2&#125;.\n&quot;.
+--&gt; 328                     format(target_id, &quot;.&quot;, name), value)
+    329             else:
+    330                 raise Py4JError(
 
-        <span class="token keyword">if</span> self<span class="token punctuation">.</span>released<span class="token punctuation">:</span>
-            <span class="token keyword">return</span> <span class="token boolean">False</span>
+Py4JJavaError: An error occurred while calling o880.save.
+: org.apache.spark.SparkException: Job aborted.
+    at org.apache.spark.sql.errors.QueryExecutionErrors$.jobAbortedError(QueryExecutionErrors.scala:496)
+    at org.apache.spark.sql.execution.datasources.FileFormatWriter$.write(FileFormatWriter.scala:251)
+    at org.apache.spark.sql.execution.datasources.InsertIntoHadoopFsRelationCommand.run(InsertIntoHadoopFsRelationCommand.scala:186)
+    at org.apache.spark.sql.execution.command.DataWritingCommandExec.sideEffectResult$lzycompute(commands.scala:113)
+    at org.apache.spark.sql.execution.command.DataWritingCommandExec.sideEffectResult(commands.scala:111)
+    at org.apache.spark.sql.execution.command.DataWritingCommandExec.executeCollect(commands.scala:125)
+    at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.$anonfun$applyOrElse$1(QueryExecution.scala:110)
+    at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$5(SQLExecution.scala:103)
+    at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:163)
+    at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:90)
+    at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:775)
+    at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:64)
+    at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:110)
+    at org.apache.spark.sql.execution.QueryExecution$$anonfun$eagerlyExecuteCommands$1.applyOrElse(QueryExecution.scala:106)
+    at org.apache.spark.sql.catalyst.trees.TreeNode.$anonfun$transformDownWithPruning$1(TreeNode.scala:481)
+    at org.apache.spark.sql.catalyst.trees.CurrentOrigin$.withOrigin(TreeNode.scala:82)
+    at org.apache.spark.sql.catalyst.trees.TreeNode.transformDownWithPruning(TreeNode.scala:481)
+    at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.org$apache$spark$sql$catalyst$plans$logical$AnalysisHelper$$super$transformDownWithPruning(LogicalPlan.scala:30)
+    at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning(AnalysisHelper.scala:267)
+    at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper.transformDownWithPruning$(AnalysisHelper.scala:263)
+    at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:30)
+    at org.apache.spark.sql.catalyst.plans.logical.LogicalPlan.transformDownWithPruning(LogicalPlan.scala:30)
+    at org.apache.spark.sql.catalyst.trees.TreeNode.transformDown(TreeNode.scala:457)
+    at org.apache.spark.sql.execution.QueryExecution.eagerlyExecuteCommands(QueryExecution.scala:106)
+    at org.apache.spark.sql.execution.QueryExecution.commandExecuted$lzycompute(QueryExecution.scala:93)
+    at org.apache.spark.sql.execution.QueryExecution.commandExecuted(QueryExecution.scala:91)
+    at org.apache.spark.sql.execution.QueryExecution.assertCommandExecuted(QueryExecution.scala:128)
+    at org.apache.spark.sql.DataFrameWriter.runCommand(DataFrameWriter.scala:848)
+    at org.apache.spark.sql.DataFrameWriter.saveToV1Source(DataFrameWriter.scala:382)
+    at org.apache.spark.sql.DataFrameWriter.saveInternal(DataFrameWriter.scala:355)
+    at org.apache.spark.sql.DataFrameWriter.save(DataFrameWriter.scala:239)
+    at sun.reflect.GeneratedMethodAccessor116.invoke(Unknown Source)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke(Method.java:498)
+    at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+    at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+    at py4j.Gateway.invoke(Gateway.java:282)
+    at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+    at py4j.commands.CallCommand.execute(CallCommand.java:79)
+    at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+    at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+    at java.lang.Thread.run(Thread.java:748)
+Caused by: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 82.0 failed 1 times, most recent failure: Lost task 0.0 in stage 82.0 (TID 131) (ip-172-31-12-72.ec2.internal executor driver): java.io.IOException: fs.s3.buffer.dir not configured
+    at org.apache.hadoop.fs.LocalDirAllocator$AllocatorPerContext.confChanged(LocalDirAllocator.java:311)
+    at org.apache.hadoop.fs.LocalDirAllocator$AllocatorPerContext.getLocalPathForWrite(LocalDirAllocator.java:393)
+    at org.apache.hadoop.fs.LocalDirAllocator$AllocatorPerContext.createTmpFileForWrite(LocalDirAllocator.java:476)
+    at org.apache.hadoop.fs.LocalDirAllocator.createTmpFileForWrite(LocalDirAllocator.java:213)
+    at org.apache.hadoop.fs.s3native.NativeS3FileSystem$NativeS3FsOutputStream.newBackupFile(NativeS3FileSystem.java:254)
+    at org.apache.hadoop.fs.s3native.NativeS3FileSystem$NativeS3FsOutputStream.&lt;init&gt;(NativeS3FileSystem.java:236)
+    at org.apache.hadoop.fs.s3native.NativeS3FileSystem.create(NativeS3FileSystem.java:404)
+    at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1195)
+    at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1175)
+    at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1064)
+    at org.apache.spark.sql.execution.datasources.CodecStreams$.createOutputStream(CodecStreams.scala:81)
+    at org.apache.spark.sql.execution.datasources.CodecStreams$.createOutputStreamWriter(CodecStreams.scala:92)
+    at org.apache.spark.sql.execution.datasources.csv.CsvOutputWriter.&lt;init&gt;(CsvOutputWriter.scala:38)
+    at org.apache.spark.sql.execution.datasources.csv.CSVFileFormat$$anon$1.newInstance(CSVFileFormat.scala:85)
+    at org.apache.spark.sql.execution.datasources.SingleDirectoryDataWriter.newOutputWriter(FileFormatDataWriter.scala:161)
+    at org.apache.spark.sql.execution.datasources.SingleDirectoryDataWriter.&lt;init&gt;(FileFormatDataWriter.scala:146)
+    at org.apache.spark.sql.execution.datasources.FileFormatWriter$.executeTask(FileFormatWriter.scala:290)
+    at org.apache.spark.sql.execution.datasources.FileFormatWriter$.$anonfun$write$16(FileFormatWriter.scala:229)
+    at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+    at org.apache.spark.scheduler.Task.run(Task.scala:131)
+    at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:506)
+    at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1462)
+    at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:509)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+    at java.lang.Thread.run(Thread.java:748)
 
-        signal<span class="token punctuation">.</span>signal<span class="token punctuation">(</span>self<span class="token punctuation">.</span>sig<span class="token punctuation">,</span> self<span class="token punctuation">.</span>original_handler<span class="token punctuation">)</span>
+Driver stacktrace:
+    at org.apache.spark.scheduler.DAGScheduler.failJobAndIndependentStages(DAGScheduler.scala:2403)
+    at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2(DAGScheduler.scala:2352)
+    at org.apache.spark.scheduler.DAGScheduler.$anonfun$abortStage$2$adapted(DAGScheduler.scala:2351)
+    at scala.collection.mutable.ResizableArray.foreach(ResizableArray.scala:62)
+    at scala.collection.mutable.ResizableArray.foreach$(ResizableArray.scala:55)
+    at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:49)
+    at org.apache.spark.scheduler.DAGScheduler.abortStage(DAGScheduler.scala:2351)
+    at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1(DAGScheduler.scala:1109)
+    at org.apache.spark.scheduler.DAGScheduler.$anonfun$handleTaskSetFailed$1$adapted(DAGScheduler.scala:1109)
+    at scala.Option.foreach(Option.scala:407)
+    at org.apache.spark.scheduler.DAGScheduler.handleTaskSetFailed(DAGScheduler.scala:1109)
+    at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.doOnReceive(DAGScheduler.scala:2591)
+    at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2533)
+    at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onReceive(DAGScheduler.scala:2522)
+    at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:49)
+    at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:898)
+    at org.apache.spark.SparkContext.runJob(SparkContext.scala:2214)
+    at org.apache.spark.sql.execution.datasources.FileFormatWriter$.write(FileFormatWriter.scala:218)
+    ... 40 more
+Caused by: java.io.IOException: fs.s3.buffer.dir not configured
+    at org.apache.hadoop.fs.LocalDirAllocator$AllocatorPerContext.confChanged(LocalDirAllocator.java:311)
+    at org.apache.hadoop.fs.LocalDirAllocator$AllocatorPerContext.getLocalPathForWrite(LocalDirAllocator.java:393)
+    at org.apache.hadoop.fs.LocalDirAllocator$AllocatorPerContext.createTmpFileForWrite(LocalDirAllocator.java:476)
+    at org.apache.hadoop.fs.LocalDirAllocator.createTmpFileForWrite(LocalDirAllocator.java:213)
+    at org.apache.hadoop.fs.s3native.NativeS3FileSystem$NativeS3FsOutputStream.newBackupFile(NativeS3FileSystem.java:254)
+    at org.apache.hadoop.fs.s3native.NativeS3FileSystem$NativeS3FsOutputStream.&lt;init&gt;(NativeS3FileSystem.java:236)
+    at org.apache.hadoop.fs.s3native.NativeS3FileSystem.create(NativeS3FileSystem.java:404)
+    at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1195)
+    at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1175)
+    at org.apache.hadoop.fs.FileSystem.create(FileSystem.java:1064)
+    at org.apache.spark.sql.execution.datasources.CodecStreams$.createOutputStream(CodecStreams.scala:81)
+    at org.apache.spark.sql.execution.datasources.CodecStreams$.createOutputStreamWriter(CodecStreams.scala:92)
+    at org.apache.spark.sql.execution.datasources.csv.CsvOutputWriter.&lt;init&gt;(CsvOutputWriter.scala:38)
+    at org.apache.spark.sql.execution.datasources.csv.CSVFileFormat$$anon$1.newInstance(CSVFileFormat.scala:85)
+    at org.apache.spark.sql.execution.datasources.SingleDirectoryDataWriter.newOutputWriter(FileFormatDataWriter.scala:161)
+    at org.apache.spark.sql.execution.datasources.SingleDirectoryDataWriter.&lt;init&gt;(FileFormatDataWriter.scala:146)
+    at org.apache.spark.sql.execution.datasources.FileFormatWriter$.executeTask(FileFormatWriter.scala:290)
+    at org.apache.spark.sql.execution.datasources.FileFormatWriter$.$anonfun$write$16(FileFormatWriter.scala:229)
+    at org.apache.spark.scheduler.ResultTask.runTask(ResultTask.scala:90)
+    at org.apache.spark.scheduler.Task.run(Task.scala:131)
+    at org.apache.spark.executor.Executor$TaskRunner.$anonfun$run$3(Executor.scala:506)
+    at org.apache.spark.util.Utils$.tryWithSafeFinally(Utils.scala:1462)
+    at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:509)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+    ... 1 more<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>真正进行大规模数据处理的时候, 可以SSH连接至master node, 将notebook上测试好的代码挂到机器上跑. 或者直接使用AWS的创建step的功能, 在这几个地方,可以直接使用s3://访问s3 bucket上的数据.</p>
+</li>
+</ul>
+<h2 id="EMR-Notebook启动kernel失败的问题-好像在EMR6-5-0中已经被修复"><a href="#EMR-Notebook启动kernel失败的问题-好像在EMR6-5-0中已经被修复" class="headerlink" title="EMR Notebook启动kernel失败的问题, 好像在EMR6.5.0中已经被修复."></a>EMR Notebook启动kernel失败的问题, 好像在EMR6.5.0中已经被修复.</h2><h2 id="EMR-Notebook使用PySpark核时遇到下面的问题"><a href="#EMR-Notebook使用PySpark核时遇到下面的问题" class="headerlink" title="EMR Notebook使用PySpark核时遇到下面的问题"></a>EMR Notebook使用PySpark核时遇到下面的问题</h2><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Starting Spark application
+The code failed because of a fatal error:
+    Session 0 did not start up in 60 seconds..
 
-        self<span class="token punctuation">.</span>released <span class="token operator">=</span> <span class="token boolean">True</span>
+Some things to try:
+a) Make sure Spark has enough available resources for Jupyter to create a Spark context.
+b) Contact your Jupyter administrator to make sure the Spark magics library is configured correctly.
+c) Restart the kernel.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-        <span class="token keyword">return</span> <span class="token boolean">True</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>解决办法: 未知…但是可以换成python核手动安装spark去处理…知道的欢迎留言告诉我.</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">%pip install spark<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 一般处理</span>
-<span class="token keyword">with</span> GracefulInterruptHandler<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> h<span class="token punctuation">:</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">xrange</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span> <span class="token string">"..."</span>
-        time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-        <span class="token keyword">if</span> h<span class="token punctuation">.</span>interrupted<span class="token punctuation">:</span>
-            <span class="token keyword">print</span> <span class="token string">"interrupted!"</span>
-            time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-            <span class="token keyword">break</span>
-
-<span class="token comment"># 循环中的处理</span>
-<span class="token keyword">with</span> GracefulInterruptHandler<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> h1<span class="token punctuation">:</span>
-    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
-        <span class="token keyword">print</span> <span class="token string">"(1)..."</span>
-        time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-        <span class="token keyword">with</span> GracefulInterruptHandler<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> h2<span class="token punctuation">:</span>
-            <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
-                <span class="token keyword">print</span> <span class="token string">"\t(2)..."</span>
-                time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-                <span class="token keyword">if</span> h2<span class="token punctuation">.</span>interrupted<span class="token punctuation">:</span>
-                    <span class="token keyword">print</span> <span class="token string">"\t(2) interrupted!"</span>
-                    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-                    <span class="token keyword">break</span>
-        <span class="token keyword">if</span> h1<span class="token punctuation">.</span>interrupted<span class="token punctuation">:</span>
-            <span class="token keyword">print</span> <span class="token string">"(1) interrupted!"</span>
-            time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-            <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="也可以采用catch-keyboard-interrupt的方法去处理"><a href="#也可以采用catch-keyboard-interrupt的方法去处理" class="headerlink" title="也可以采用catch keyboard interrupt的方法去处理"></a>也可以采用catch keyboard interrupt的方法去处理</h3><ol>
-<li>局限性：可能不适用于kill的方法。</li>
-</ol>
 
       </div>
       <div class="post-tags-categories">
@@ -788,8 +985,8 @@
               About Experience
             </a>
           
-            <a href="../../../../tags/About-Linux/" class="">
-              About Linux
+            <a href="../../../../tags/About-AWS/" class="">
+              About AWS
             </a>
           
         </div>
@@ -803,7 +1000,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>link:  </strong>
-    <a href="/2022/01/19/linux-xia-zhong-duan-cheng-xu-dao-zhi-xie-wen-jian-shi-bai/" target="_blank" title="Linux下中断程序导致写文件失败">https://hiyoungshen.github.io/2022/01/19/linux-xia-zhong-duan-cheng-xu-dao-zhi-xie-wen-jian-shi-bai/</a>
+    <a href="/2022/01/25/emrnotebookcannotwritefilethroughs3/" target="_blank" title="EMRNotebookCannotWriteFileThroughS3">https://hiyoungshen.github.io/2022/01/25/emrnotebookcannotwritefilethroughs3/</a>
     </li>
     <li class="post-copyright-license">
       <strong>Copyright notice:   </strong>
@@ -827,14 +1024,16 @@
       background-position: center center;">
       <img class="lazyload lazyload placeholder" src="../../../../medias/8.jpg" class="lazyload placeholder" data-srcset="../../../../medias/8.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="">
     </div>
-    <a href="../../20/aws-emr-notebook-attached-successfully-but-still-workspace-is-not-attached-to-cluster-click-ok-to-continue/" class="post-nav-link">
+    <a href="../guan-yu-lun-wen-xie-zuo/" class="post-nav-link">
       <div class="title">
         <i class="fas fa-angle-left"></i> Prev:
-        <div class="title-text">aws emr notebook attached successfully but still &#34;Workspace is not attached to cluster. Click Ok to continue.&#34;</div>
+        <div class="title-text">关于论文写作</div>
       </div>
       
       <!-- <div class="content">
-        aws emr notebook attached successfully but still “Workspace 
+        内容上注意点一般可以采用总分结构
+一个模块，比如背景模块，开头总写，段落分写。
+一个段落，比如介绍App分析工作的一个段
       </div> -->
     </a>
   </div>
@@ -845,16 +1044,15 @@
   <div class="post-nav-next post-nav-item">
     <div class="post-nav-img" style="background-size: cover; 
       background-position: center center;">
-      <img class="lazyload lazyload placeholder" src="../../../../medias/5.jpg" class="lazyload placeholder" data-srcset="../../../../medias/5.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
+      <img class="lazyload lazyload placeholder" src="../../../../medias/10.jpg" class="lazyload placeholder" data-srcset="../../../../medias/10.jpg" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" src="" alt="">
     </div>
-    <a href="../../17/python-request-selenium-pa-chong-jing-yan/" class="post-nav-link">
+    <a href="../awsemrfilesystem/" class="post-nav-link">
       <div class="title">
         Next: <i class="fas fa-angle-right"></i>
-        <div class="title-text">python request+selenium爬虫经验</div>
+        <div class="title-text">AWSEMRFilesystem</div>
       </div>
       <!-- <div class="content">
-        Background
-从10.15-1.17，一直在使用python+selenium+request爬虫，中间重新获取
+        Latest AWS EMR Filesystem(recommended)Work with storage and 
       </div> -->
     </a>
   </div>

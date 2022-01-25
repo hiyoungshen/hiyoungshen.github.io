@@ -6,7 +6,7 @@
   <link href="https://hiyoungshen.github.io/atom.xml" rel="self"/>
   
   <link href="https://hiyoungshen.github.io/"/>
-  <updated>2022-01-20T14:11:53.869Z</updated>
+  <updated>2022-01-25T08:59:49.708Z</updated>
   <id>https://hiyoungshen.github.io/</id>
   
   <author>
@@ -17,11 +17,185 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>关于论文写作</title>
+    <link href="https://hiyoungshen.github.io/2022/01/25/guan-yu-lun-wen-xie-zuo/"/>
+    <id>https://hiyoungshen.github.io/2022/01/25/guan-yu-lun-wen-xie-zuo/</id>
+    <published>2022-01-25T08:47:21.000Z</published>
+    <updated>2022-01-25T08:59:49.708Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;内容上注意点&quot;&gt;&lt;a href=&quot;#内容上注意点&quot; class=&quot;headerlink&quot; title=&quot;内容上注意点&quot;&gt;&lt;/a&gt;内容上注意点&lt;/h1&gt;&lt;h2 id=&quot;一般可以采用总分结构&quot;&gt;&lt;a href=&quot;#一般可以采用总分结构&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/categories/About-Thesis/"/>
+    
+    <category term="About Composition" scheme="https://hiyoungshen.github.io/categories/About-Thesis/About-Composition/"/>
+    
+    
+    <category term="About Thesis" scheme="https://hiyoungshen.github.io/tags/About-Thesis/"/>
+    
+    <category term="About Composition" scheme="https://hiyoungshen.github.io/tags/About-Composition/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>EMRNotebookCannotWriteFileThroughS3</title>
+    <link href="https://hiyoungshen.github.io/2022/01/25/emrnotebookcannotwritefilethroughs3/"/>
+    <id>https://hiyoungshen.github.io/2022/01/25/emrnotebookcannotwritefilethroughs3/</id>
+    <published>2022-01-25T08:40:03.568Z</published>
+    <updated>2022-01-25T08:44:54.718Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;自AWS-EMR5-x和6-x的某个版本后-AWS-EMR-Notebook在EMR创建的EC2机器上运行&quot;&gt;&lt;a href=&quot;#自AWS-EMR5-x和6-x的某个版本后-AWS-EMR-Notebook在EMR创建的EC2机器上运行&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
+    
+    <category term="About AWS" scheme="https://hiyoungshen.github.io/categories/About-Experience/About-AWS/"/>
+    
+    
+    <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
+    
+    <category term="About AWS" scheme="https://hiyoungshen.github.io/tags/About-AWS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AWSEMRFilesystem</title>
+    <link href="https://hiyoungshen.github.io/2022/01/25/awsemrfilesystem/"/>
+    <id>https://hiyoungshen.github.io/2022/01/25/awsemrfilesystem/</id>
+    <published>2022-01-25T08:40:03.388Z</published>
+    <updated>2022-01-25T08:44:47.858Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Latest-AWS-EMR-Filesystem-recommended&quot;&gt;&lt;a href=&quot;#Latest-AWS-EMR-Filesystem-recommended&quot; class=&quot;headerlink&quot; title=&quot;Latest AWS EMR</summary>
+        
+      
+    
+    
+    
+    <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
+    
+    <category term="About AWS" scheme="https://hiyoungshen.github.io/categories/About-Experience/About-AWS/"/>
+    
+    
+    <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
+    
+    <category term="About AWS" scheme="https://hiyoungshen.github.io/tags/About-AWS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AWSEMRFilesystem</title>
+    <link href="https://hiyoungshen.github.io/2022/01/25/web-pa-chong-de-yi-chang-chu-li/"/>
+    <id>https://hiyoungshen.github.io/2022/01/25/web-pa-chong-de-yi-chang-chu-li/</id>
+    <published>2022-01-25T08:40:03.198Z</published>
+    <updated>2022-01-25T08:46:09.498Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;获取Web数据，撰写爬虫需要处理大量异常&quot;&gt;&lt;a href=&quot;#获取Web数据，撰写爬虫需要处理大量异常&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
+    
+    <category term="About Web" scheme="https://hiyoungshen.github.io/categories/About-Experience/About-Web/"/>
+    
+    
+    <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
+    
+    <category term="About Web" scheme="https://hiyoungshen.github.io/tags/About-Web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SparkSession</title>
+    <link href="https://hiyoungshen.github.io/2022/01/25/sparksession/"/>
+    <id>https://hiyoungshen.github.io/2022/01/25/sparksession/</id>
+    <published>2022-01-25T08:40:02.978Z</published>
+    <updated>2022-01-25T08:45:58.148Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;A-tale-of-Spark-Session-and-Spark-Context-https-medium-com-achilleus-spark-session-10d0d66d1d24&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
+    
+    <category term="About Spark" scheme="https://hiyoungshen.github.io/categories/About-Experience/About-Spark/"/>
+    
+    
+    <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
+    
+    <category term="About Spark" scheme="https://hiyoungshen.github.io/tags/About-Spark/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nohup失效时</title>
+    <link href="https://hiyoungshen.github.io/2022/01/25/nohup-shi-xiao-shi/"/>
+    <id>https://hiyoungshen.github.io/2022/01/25/nohup-shi-xiao-shi/</id>
+    <published>2022-01-25T08:40:02.838Z</published>
+    <updated>2022-01-25T08:45:19.008Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;使用screen命令可一定程度上模拟-Linux-screen命令-菜鸟教程-runoob-com&quot;&gt;&lt;a href=&quot;#使用screen命令可一定程度上模拟-Linux-screen命令-菜鸟教程-runoob-com&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
+    
+    <category term="About Linux" scheme="https://hiyoungshen.github.io/categories/About-Experience/About-Linux/"/>
+    
+    
+    <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
+    
+    <category term="About Linux" scheme="https://hiyoungshen.github.io/tags/About-Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>aws emr notebook attached successfully but still &quot;Workspace is not attached to cluster. Click Ok to continue.&quot;</title>
     <link href="https://hiyoungshen.github.io/2022/01/20/aws-emr-notebook-attached-successfully-but-still-workspace-is-not-attached-to-cluster-click-ok-to-continue/"/>
     <id>https://hiyoungshen.github.io/2022/01/20/aws-emr-notebook-attached-successfully-but-still-workspace-is-not-attached-to-cluster-click-ok-to-continue/</id>
     <published>2022-01-20T14:08:35.189Z</published>
-    <updated>2022-01-20T14:11:53.869Z</updated>
+    <updated>2022-01-25T08:44:42.358Z</updated>
     
     
       
@@ -36,8 +210,12 @@
     
     <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
     
+    <category term="About AWS" scheme="https://hiyoungshen.github.io/categories/About-Experience/About-AWS/"/>
+    
     
     <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
+    
+    <category term="About AWS" scheme="https://hiyoungshen.github.io/tags/About-AWS/"/>
     
   </entry>
   
@@ -46,7 +224,7 @@
     <link href="https://hiyoungshen.github.io/2022/01/19/linux-xia-zhong-duan-cheng-xu-dao-zhi-xie-wen-jian-shi-bai/"/>
     <id>https://hiyoungshen.github.io/2022/01/19/linux-xia-zhong-duan-cheng-xu-dao-zhi-xie-wen-jian-shi-bai/</id>
     <published>2022-01-19T03:44:22.000Z</published>
-    <updated>2022-01-19T03:49:47.098Z</updated>
+    <updated>2022-01-25T08:45:11.728Z</updated>
     
     
       
@@ -61,8 +239,12 @@
     
     <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
     
+    <category term="About Linux" scheme="https://hiyoungshen.github.io/categories/About-Experience/About-Linux/"/>
+    
     
     <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
+    
+    <category term="About Linux" scheme="https://hiyoungshen.github.io/tags/About-Linux/"/>
     
   </entry>
   
@@ -71,7 +253,7 @@
     <link href="https://hiyoungshen.github.io/2022/01/17/python-request-selenium-pa-chong-jing-yan/"/>
     <id>https://hiyoungshen.github.io/2022/01/17/python-request-selenium-pa-chong-jing-yan/</id>
     <published>2022-01-17T13:48:49.000Z</published>
-    <updated>2022-01-19T03:43:58.208Z</updated>
+    <updated>2022-01-25T08:45:34.378Z</updated>
     
     
       
@@ -86,8 +268,12 @@
     
     <category term="About Experience" scheme="https://hiyoungshen.github.io/categories/About-Experience/"/>
     
+    <category term="About Web" scheme="https://hiyoungshen.github.io/categories/About-Experience/About-Web/"/>
+    
     
     <category term="About Experience" scheme="https://hiyoungshen.github.io/tags/About-Experience/"/>
+    
+    <category term="About Web" scheme="https://hiyoungshen.github.io/tags/About-Web/"/>
     
   </entry>
   
