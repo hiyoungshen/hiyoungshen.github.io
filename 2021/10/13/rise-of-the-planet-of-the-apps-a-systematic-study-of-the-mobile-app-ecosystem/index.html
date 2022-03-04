@@ -680,11 +680,11 @@
 </li>
 <li>Figure 3 clearly shows that there is a significant curvature for large x values (less popular apps) as well。<ul>
 <li>has been thought to be attributed to search engines and recommendation systems</li>
-<li><strong>we feel that this curvature is an instance of a more general phenomenon</strong>, to which we refer as the <strong>clustering effect</strong>.<h2 id="4-THE-CLUSTERING-EFFECT"><a href="#4-THE-CLUSTERING-EFFECT" class="headerlink" title="4. THE CLUSTERING EFFECT"></a>4. THE CLUSTERING EFFECT</h2></li>
+<li><strong>we feel that this curvature is an instance of a more general phenomenon</strong>, to which we refer as the <strong>clustering effect</strong>.</li>
 </ul>
 </li>
 </ul>
-<h3 id="4-1-Users-Focus-on-a-Few-Categories"><a href="#4-1-Users-Focus-on-a-Few-Categories" class="headerlink" title="4.1 Users Focus on a Few Categories"></a>4.1 Users Focus on a Few Categories</h3><ul>
+<h2 id="4-THE-CLUSTERING-EFFECT"><a href="#4-THE-CLUSTERING-EFFECT" class="headerlink" title="4. THE CLUSTERING EFFECT"></a>4. THE CLUSTERING EFFECT</h2><h3 id="4-1-Users-Focus-on-a-Few-Categories"><a href="#4-1-Users-Focus-on-a-Few-Categories" class="headerlink" title="4.1 Users Focus on a Few Categories"></a>4.1 Users Focus on a Few Categories</h3><ul>
 <li>(A) apps are categorized into clusters: Most appstores al ready group apps into clusters</li>
 <li>(B)<strong>once users have downloaded an app from one cluster, it is more likely to download another app from the same cluster</strong></li>
 <li><font color="#FF0000">如何验证上面的(B)这个结论？</font></li>
@@ -758,25 +758,30 @@
 <li>$1-xxx$代表总的减去不下载的概率</li>
 <li> (1 − p) × d Zipf-based selections</li>
 <li> p × d clustering-based selections</li>
-<li> ？？？(没大看懂)<h3 id="5-2-Simulation-based-Model-Validation"><a href="#5-2-Simulation-based-Model-Validation" class="headerlink" title="5.2 Simulation-based Model Validation"></a>5.2 Simulation-based Model Validation</h3></li>
+<li> ？？？(没大看懂)</li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+<h3 id="5-2-Simulation-based-Model-Validation"><a href="#5-2-Simulation-based-Model-Validation" class="headerlink" title="5.2 Simulation-based Model Validation"></a>5.2 Simulation-based Model Validation</h3><ul>
 <li>To validate our model and understand <strong>the impact of clustering effect on the app downloads distribution</strong>, we developed <strong>three Monte Carlo simulators of an appstore, using ZIPF, ZIPF-at-most-once, and APP-CLUSTERING models</strong>.</li>
 <li>In the <strong>ZIPF simulator</strong> all downloads are <strong>drawn from ZG</strong>. </li>
 <li>In the <strong>ZIPF-at-most-once simulator</strong> all downloads are <strong>drawn from ZG</strong>, but <strong>each user can never download the same app more than once</strong>. </li>
 <li>valide model:<ul>
-<li><img src="/2021/10/13/rise-of-the-planet-of-the-apps-a-systematic-study-of-the-mobile-app-ecosystem/Equ6.png" class="lazyload placeholder" data-srcset="/2021/10/13/rise-of-the-planet-of-the-apps-a-systematic-study-of-the-mobile-app-ecosystem/Equ6.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="综合上面的分析，我们得到公式"><h4 id="5-2-1-Comparing-Modeled-and-Actual-Downloads"><a href="#5-2-1-Comparing-Modeled-and-Actual-Downloads" class="headerlink" title="5.2.1 Comparing Modeled and Actual Downloads"></a>5.2.1 Comparing Modeled and Actual Downloads</h4><img src="/2021/10/13/rise-of-the-planet-of-the-apps-a-systematic-study-of-the-mobile-app-ecosystem/Figure8.png" class="lazyload placeholder" data-srcset="/2021/10/13/rise-of-the-planet-of-the-apps-a-systematic-study-of-the-mobile-app-ecosystem/Figure8.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="模拟得到的结果"></li>
+<li><img src="/2021/10/13/rise-of-the-planet-of-the-apps-a-systematic-study-of-the-mobile-app-ecosystem/Equ6.png" class="lazyload placeholder" data-srcset="/2021/10/13/rise-of-the-planet-of-the-apps-a-systematic-study-of-the-mobile-app-ecosystem/Equ6.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="综合上面的分析，我们得到公式"></li>
 </ul>
 </li>
+</ul>
+<h4 id="5-2-1-Comparing-Modeled-and-Actual-Downloads"><a href="#5-2-1-Comparing-Modeled-and-Actual-Downloads" class="headerlink" title="5.2.1 Comparing Modeled and Actual Downloads"></a>5.2.1 Comparing Modeled and Actual Downloads</h4><p><img src="/2021/10/13/rise-of-the-planet-of-the-apps-a-systematic-study-of-the-mobile-app-ecosystem/Figure8.png" class="lazyload placeholder" data-srcset="/2021/10/13/rise-of-the-planet-of-the-apps-a-systematic-study-of-the-mobile-app-ecosystem/Figure8.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="模拟得到的结果"></p>
+<ul>
 <li>上面是模拟得到的结果图</li>
 <li>下面是模拟得到的结果</li>
 <li><img src="/2021/10/13/rise-of-the-planet-of-the-apps-a-systematic-study-of-the-mobile-app-ecosystem/Figure9.png" class="lazyload placeholder" data-srcset="/2021/10/13/rise-of-the-planet-of-the-apps-a-systematic-study-of-the-mobile-app-ecosystem/Figure9.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="模拟得到的结果"></li>
 <li><img src="/2021/10/13/rise-of-the-planet-of-the-apps-a-systematic-study-of-the-mobile-app-ecosystem/Figure10.png" class="lazyload placeholder" data-srcset="/2021/10/13/rise-of-the-planet-of-the-apps-a-systematic-study-of-the-mobile-app-ecosystem/Figure10.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="模拟得到的结果"></li>
-<li>结论：<strong>APP-CLUSTERING model最好，其次Zip-at-most-once，最后Zip-at-most</strong><h2 id="6-APP-PRICING-AND-INCOME"><a href="#6-APP-PRICING-AND-INCOME" class="headerlink" title="6. APP PRICING AND INCOME"></a>6. APP PRICING AND INCOME</h2></li>
+<li>结论：<strong>APP-CLUSTERING model最好，其次Zip-at-most-once，最后Zip-at-most</strong></li>
 </ul>
-<h3 id="The-Influence-of-Cost-on-App-Popularity"><a href="#The-Influence-of-Cost-on-App-Popularity" class="headerlink" title="The Influence of Cost on App Popularity"></a>The Influence of Cost on App Popularity</h3><p><img src="/2021/10/13/rise-of-the-planet-of-the-apps-a-systematic-study-of-the-mobile-app-ecosystem/Figure11.png" class="lazyload placeholder" data-srcset="/2021/10/13/rise-of-the-planet-of-the-apps-a-systematic-study-of-the-mobile-app-ecosystem/Figure11.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="The Influence of Cost on App Popularity"></p>
+<h2 id="6-APP-PRICING-AND-INCOME"><a href="#6-APP-PRICING-AND-INCOME" class="headerlink" title="6. APP PRICING AND INCOME"></a>6. APP PRICING AND INCOME</h2><h3 id="The-Influence-of-Cost-on-App-Popularity"><a href="#The-Influence-of-Cost-on-App-Popularity" class="headerlink" title="The Influence of Cost on App Popularity"></a>The Influence of Cost on App Popularity</h3><p><img src="/2021/10/13/rise-of-the-planet-of-the-apps-a-systematic-study-of-the-mobile-app-ecosystem/Figure11.png" class="lazyload placeholder" data-srcset="/2021/10/13/rise-of-the-planet-of-the-apps-a-systematic-study-of-the-mobile-app-ecosystem/Figure11.png" srcset="https://img2.baidu.com/it/u=2037979560,2772131037&fm=26&fmt=auto&gp=0.jpg" alt="The Influence of Cost on App Popularity"></p>
 <ul>
 <li>paid apps clearly follow a pure<strong>power-law distribution</strong></li>
 <li>Free apps follow a similar distribution as the one observed in Section 3.2</li>
